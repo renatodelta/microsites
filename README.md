@@ -28,3 +28,4 @@ powershell -ExecutionPolicy Bypass -File .\scripts\new-site.ps1 -SiteSlug "novos
 ## Deploy
 
 Cada pasta em `sites/<dominio>` pode ser publicada de forma independente (Apache/Nginx/Cloudflare Pages/Netlify/Vercel).
+# microsites
