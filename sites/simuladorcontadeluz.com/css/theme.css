@@ -1,0 +1,7 @@
+﻿@import url('../../../shared/css/base.css');
+@import url('../../../shared/css/compliance.css');
+
+:root {
+  --primary: #2563eb;
+  --secondary: #f59e0b;
+}

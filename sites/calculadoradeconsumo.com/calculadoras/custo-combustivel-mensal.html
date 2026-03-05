@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang='pt-BR'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>Calculadora de Custo de Combustivel Mensal</title>
+  <meta name='description' content='Estime litros consumidos e gasto mensal com combustivel.' />
+  <meta name='adsense-client' content='ca-pub-0000000000000000' />
+  <link rel='stylesheet' href='../css/theme.css' />
+  <script defer src='../js/compliance.js'></script>
+  <script defer src='../js/custo-combustivel-mensal.js'></script>
+</head>
+<body>
+  <header>
+    <div class='container topbar'>
+      <a class='brand' href='../index.html'>Calculadora de Consumo</a>
+      <nav>
+        <a href='./index.html'>Calculadoras</a>
+        <a href='../artigos/index.html'>Artigos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class='container hero'>
+    <h1>Calculadora de Custo de Combustivel Mensal</h1>
+    <p>Descubra quanto voce gasta por mes com base em distancia, rendimento e preco do litro.</p>
+
+    <section class='card'>
+      <div class='field'>
+        <label for='kmMes'>Quilometragem por mes (km)</label>
+        <input id='kmMes' type='number' min='0' step='1' />
+      </div>
+      <div class='field'>
+        <label for='kmLitro'>Rendimento do veiculo (km/l)</label>
+        <input id='kmLitro' type='number' min='0.1' step='0.1' />
+      </div>
+      <div class='field'>
+        <label for='precoLitro'>Preco do combustivel (R$/l)</label>
+        <input id='precoLitro' type='number' min='0' step='0.01' />
+      </div>
+      <button class='btn' id='calcularBtn'>Calcular</button>
+      <p class='result' id='resultado'></p>
+    </section>
+  </main>
+</body>
+</html>

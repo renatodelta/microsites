@@ -1,0 +1,9 @@
+﻿{
+  "siteSlug": "simuladorcontadeluz.com",
+  "brandName": "Simulador Conta de Luz",
+  "palette": {
+    "primary": "#2563eb",
+    "secondary": "#f59e0b"
+  },
+  "description": "Ferramentas para estimar conta de luz e conteúdos sobre tarifa e consumo."
+}

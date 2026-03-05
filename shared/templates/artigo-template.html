@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ARTICLE_TITLE}}</title>
+  <meta name="description" content="{{ARTICLE_DESCRIPTION}}" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://{{SITE_DOMAIN}}/artigos/{{SEO_SLUG}}.html" />
+
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="{{BRAND_NAME}}" />
+  <meta property="og:title" content="{{SEO_TITLE}}" />
+  <meta property="og:description" content="{{SEO_META_DESCRIPTION}}" />
+  <meta property="og:url" content="https://{{SITE_DOMAIN}}/artigos/{{SEO_SLUG}}.html" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{SEO_TITLE}}" />
+  <meta name="twitter:description" content="{{SEO_META_DESCRIPTION}}" />
+  <meta name="adsense-client" content="ca-pub-0000000000000000" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{SEO_TITLE}}",
+      "description": "{{SEO_META_DESCRIPTION}}",
+      "inLanguage": "pt-BR",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://{{SITE_DOMAIN}}/artigos/{{SEO_SLUG}}.html"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "{{BRAND_NAME}}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{BRAND_NAME}}"
+      },
+      "datePublished": "{{PUBLISHED_DATE}}",
+      "dateModified": "{{MODIFIED_DATE}}"
+    }
+  </script>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <script defer src="../js/compliance.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="../index.html">{{BRAND_NAME}}</a>
+      <nav>
+        <a href="../index.html">Início</a>
+        <a href="../calculadoras/index.html">Calculadoras</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container hero">
+    <article class="card">
+      <h1>{{ARTICLE_TITLE}}</h1>
+      <p>{{ARTICLE_INTRO}}</p>
+      <h2>Subtítulo</h2>
+      <p>Conteúdo do artigo...</p>
+
+      <script type="application/json" class="seo-backend">
+        {
+          "palavraChaveFoco": "{{FOCUS_KEYWORD}}",
+          "tituloSEO": "{{SEO_TITLE}}",
+          "metaDescription": "{{SEO_META_DESCRIPTION}}",
+          "slugSugerido": "{{SEO_SLUG}}",
+          "variacoesSemanticas": [
+            "{{SEO_VARIACAO_1}}",
+            "{{SEO_VARIACAO_2}}",
+            "{{SEO_VARIACAO_3}}"
+          ]
+        }
+      </script>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      © {{YEAR}} {{BRAND_NAME}}
+    </div>
+  </footer>
+</body>
+</html>

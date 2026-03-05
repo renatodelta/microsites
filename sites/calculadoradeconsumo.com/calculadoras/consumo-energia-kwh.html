@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang='pt-BR'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>Calculadora de Consumo de Energia (kWh)</title>
+  <meta name='description' content='Calcule o consumo em kWh e o custo mensal de energia.' />
+  <meta name='adsense-client' content='ca-pub-0000000000000000' />
+  <link rel='stylesheet' href='../css/theme.css' />
+  <script defer src='../js/compliance.js'></script>
+  <script defer src='../js/consumo-energia-kwh.js'></script>
+</head>
+<body>
+  <header>
+    <div class='container topbar'>
+      <a class='brand' href='../index.html'>Calculadora de Consumo</a>
+      <nav>
+        <a href='./index.html'>Calculadoras</a>
+        <a href='../artigos/index.html'>Artigos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class='container hero'>
+    <h1>Calculadora de Consumo de Energia (kWh)</h1>
+    <p>Informe potencia, horas de uso e tarifa para estimar consumo e custo mensal.</p>
+
+    <section class='card'>
+      <div class='field'>
+        <label for='potenciaW'>Potencia do aparelho (W)</label>
+        <input id='potenciaW' type='number' min='0' step='1' />
+      </div>
+      <div class='field'>
+        <label for='horasDia'>Horas de uso por dia</label>
+        <input id='horasDia' type='number' min='0' step='0.1' />
+      </div>
+      <div class='field'>
+        <label for='diasMes'>Dias de uso no mes</label>
+        <input id='diasMes' type='number' min='0' step='1' value='30' />
+      </div>
+      <div class='field'>
+        <label for='tarifaKwh'>Tarifa (R$/kWh)</label>
+        <input id='tarifaKwh' type='number' min='0' step='0.01' />
+      </div>
+      <button class='btn' id='calcularBtn'>Calcular</button>
+      <p class='result' id='resultado'></p>
+    </section>
+  </main>
+</body>
+</html>

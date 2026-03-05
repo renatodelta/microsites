@@ -1,0 +1,3 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://calculadoradeconsumo.com/sitemap.xml

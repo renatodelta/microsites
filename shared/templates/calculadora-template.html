@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESCRIPTION}}" />
+  <meta name="adsense-client" content="ca-pub-0000000000000000" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <script defer src="../js/compliance.js"></script>
+  <script defer src="../js/calculadora.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="../index.html">{{BRAND_NAME}}</a>
+      <nav>
+        <a href="../index.html">Início</a>
+        <a href="../artigos/index.html">Artigos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container hero">
+    <h1>{{CALC_TITLE}}</h1>
+    <p>{{CALC_INTRO}}</p>
+
+    <section class="card">
+      <div class="field">
+        <label for="valor1">Valor 1</label>
+        <input id="valor1" type="number" min="0" step="0.01" />
+      </div>
+      <div class="field">
+        <label for="valor2">Valor 2</label>
+        <input id="valor2" type="number" min="0" step="0.01" />
+      </div>
+      <button class="btn" id="calcularBtn">Calcular</button>
+      <p class="result" id="resultado"></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      © {{YEAR}} {{BRAND_NAME}}
+    </div>
+  </footer>
+</body>
+</html>
