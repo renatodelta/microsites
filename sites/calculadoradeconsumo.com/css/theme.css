@@ -5,6 +5,72 @@
   --secondary: #f59e0b;
 }
 
+.site-footer {
+  margin-top: 42px;
+}
+
+.site-footer__inner {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.site-footer__copy {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.site-footer__links {
+  margin: 8px 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.site-footer__links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.site-footer__links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__links span {
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    margin-top: 28px;
+  }
+
+  .site-footer__inner {
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+
+  .site-footer__copy {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .site-footer__links {
+    margin-top: 10px;
+    width: 100%;
+    gap: 10px;
+  }
+}
+
 .cookie-banner {
   position: fixed;
   left: 50%;

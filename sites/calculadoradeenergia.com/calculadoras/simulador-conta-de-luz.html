@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang='pt-BR'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>Simulador de Conta de Luz - Calculadora de Energia</title>
+  <meta name='description' content='Simule valor final da conta com consumo, tarifa, bandeira e impostos.' />
+  <meta name='adsense-client' content='ca-pub-0000000000000000' />
+  <link rel='icon' type='image/svg+xml' href='../assets/favicon.svg' />
+  <link rel='stylesheet' href='../css/theme.css' />
+  <script defer src='../js/compliance.js'></script>
+  <script defer src='../js/simulador-conta-de-luz.js'></script>
+</head>
+<body>
+  <header>
+    <div class='container topbar'>
+      <a class='brand' href='../index.html'>
+        <img class='brand-logo' src='../assets/logo.svg' alt='Calculadora de Energia' />
+      </a>
+      <nav>
+        <a href='./index.html'>Calculadoras</a>
+        <a href='../artigos/index.html'>Artigos</a>
+        <a href='../sobre.html'>Sobre</a>
+        <a href='../politica-de-privacidade.html'>Política de Privacidade</a>
+        <a href='../contato.html'>Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class='container hero'>
+    <h1>Simulador de conta de luz</h1>
+    <section class='card'>
+      <div class='field'>
+        <label for='consumoKwh'>Consumo mensal (kWh)</label>
+        <input id='consumoKwh' type='number' step='0.01' min='0' />
+      </div>
+      <div class='field'>
+        <label for='tarifa'>Tarifa base (R$/kWh)</label>
+        <input id='tarifa' type='number' step='0.01' min='0' />
+      </div>
+      <div class='field'>
+        <label for='bandeira'>Adicional bandeira (R$/kWh)</label>
+        <input id='bandeira' type='number' step='0.01' min='0' value='0' />
+      </div>
+      <div class='field'>
+        <label for='impostos'>Impostos e taxas (%)</label>
+        <input id='impostos' type='number' step='0.1' min='0' value='18' />
+      </div>
+      <button class='btn' id='calcularBtn'>Simular conta</button>
+      <p class='result' id='resultado'></p>
+    </section>
+  </main>
+
+  <footer class='site-footer'>
+    <div class='container site-footer__inner'>
+      <p class='site-footer__copy'>© 2026 Calculadora de Energia - Todos os direitos reservados.</p>
+      <p class='site-footer__links'>
+        <a href='../sobre.html'>Sobre</a>
+        <span>|</span>
+        <a href='../contato.html'>Contato</a>
+        <span>|</span>
+        <a href='../politica-de-privacidade.html'>Política de Privacidade</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

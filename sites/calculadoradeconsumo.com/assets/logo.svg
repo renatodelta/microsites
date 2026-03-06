@@ -1,0 +1,19 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='340' height='72' viewBox='0 0 340 72' role='img' aria-label='Calculadora de Consumo'>
+  <defs>
+    <linearGradient id='g1' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#0f766e'/>
+      <stop offset='100%' stop-color='#f59e0b'/>
+    </linearGradient>
+  </defs>
+  <rect x='0' y='4' width='64' height='64' rx='16' fill='url(#g1)'/>
+  <rect x='19' y='13' width='26' height='44' rx='5' fill='none' stroke='#ffffff' stroke-width='4'/>
+  <rect x='24' y='20' width='16' height='8' rx='2' fill='#ffffff' opacity='0.95'/>
+  <rect x='24' y='33' width='4' height='4' rx='1' fill='#ffffff'/>
+  <rect x='31' y='33' width='4' height='4' rx='1' fill='#ffffff'/>
+  <rect x='38' y='33' width='4' height='4' rx='1' fill='#ffffff'/>
+  <rect x='24' y='40' width='4' height='4' rx='1' fill='#ffffff'/>
+  <rect x='31' y='40' width='4' height='4' rx='1' fill='#ffffff'/>
+  <rect x='38' y='40' width='4' height='10' rx='1' fill='#ffffff'/>
+  <text x='76' y='31' fill='#0f766e' font-size='21' font-family='Inter, Segoe UI, Arial, sans-serif' font-weight='800'>Calculadora</text>
+  <text x='76' y='55' fill='#b45309' font-size='21' font-family='Inter, Segoe UI, Arial, sans-serif' font-weight='800'>de Consumo</text>
+</svg>

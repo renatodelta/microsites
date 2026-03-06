@@ -214,35 +214,6 @@
     return modal;
   }
 
-  function ensureFooterComplianceLinks() {
-    let footerWrap = document.querySelector('.footer-wrap');
-
-    if (!footerWrap) {
-      let footer = document.querySelector('footer');
-      if (!footer) {
-        footer = document.createElement('footer');
-        document.body.appendChild(footer);
-      }
-
-      footerWrap = document.createElement('div');
-      footerWrap.className = 'container footer-wrap';
-      footer.appendChild(footerWrap);
-    }
-
-    if (!footerWrap.querySelector('#footerManageCookies')) {
-      const manage = document.createElement('button');
-      manage.type = 'button';
-      manage.id = 'footerManageCookies';
-      manage.className = 'link-button cookie-manage-inline';
-      manage.textContent = 'Gerenciar cookies';
-      footerWrap.appendChild(manage);
-    }
-  }
-
-  function createFixedManageButton() {
-    return null;
-  }
-
   function sanitizeValue(text) {
     return String(text)
       .replace(/[<>]/g, '')
@@ -278,8 +249,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    ensureFooterComplianceLinks();
-    const fixedButton = createFixedManageButton();
     attachFormProtection();
 
     const banner = createConsentBanner();
@@ -355,13 +324,5 @@
       }
     });
 
-    const footerManage = document.getElementById('footerManageCookies');
-    if (footerManage) {
-      footerManage.addEventListener('click', openModal);
-    }
-
-    if (fixedButton) {
-      fixedButton.addEventListener('click', openModal);
-    }
   });
 })();
