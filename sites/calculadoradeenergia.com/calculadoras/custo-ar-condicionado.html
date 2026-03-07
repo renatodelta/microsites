@@ -3,11 +3,83 @@
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <title>Calculadora de Custo do Ar-condicionado - Calculadora de Energia</title>
-  <meta name='description' content='Estime o consumo e custo mensal do ar-condicionado.' />
+  <title>Calculadora de Custo do Ar-Condicionado (BTU e kWh) - Calculadora de Energia</title>
+  <meta name='description' content='Calcule o custo do ar-condicionado por BTU, consumo em kWh e tarifa de energia. Use a tabela de potência média para aparelhos inverter modernos.' />
   <meta name='adsense-client' content='ca-pub-0000000000000000' />
   <link rel='icon' type='image/svg+xml' href='../assets/favicon.svg' />
   <link rel='stylesheet' href='../css/theme.css' />
+  <style>
+    select {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      outline: none;
+      font-size: 0.98rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+    }
+
+    .helper {
+      margin: -4px 0 10px;
+      color: #64748b;
+      font-size: 0.92rem;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    .data-table th,
+    .data-table td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .data-table th {
+      color: #0f172a;
+      font-size: 0.95rem;
+    }
+
+    .data-table td strong {
+      color: #0b3b35;
+    }
+  </style>
+  <script type='application/ld+json'>
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Como calcular o custo do ar-condicionado por mês?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiplique potência (W) por horas de uso por dia e dias no mês. Divida por 1000 para obter kWh e multiplique pela tarifa de energia em R$/kWh."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a potência média de um ar-condicionado inverter por BTU?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uma referência prática para inverter moderno é: 9000 BTU = 700 W, 12000 BTU = 1000 W, 18000 BTU = 1500 W, 24000 BTU = 2000 W, 30000 BTU = 2500 W e 36000 BTU = 3000 W."
+          }
+        }
+      ]
+    }
+  </script>
   <script defer src='../js/compliance.js'></script>
   <script defer src='../js/custo-ar-condicionado.js'></script>
 </head>
@@ -29,14 +101,30 @@
 
   <main class='container hero'>
     <h1>Calculadora de custo do ar-condicionado</h1>
+    <p>Descubra o consumo em <strong>kWh</strong> e o valor mensal com base na capacidade em <strong>BTU</strong>, horas de uso e tarifa da sua região.</p>
+
     <section class='card'>
       <div class='field'>
-        <label for='potencia'>Potência média do ar-condicionado (W)</label>
-        <input id='potencia' type='number' step='1' min='0' value='1200' />
+        <label for='capacidadeBtu'>Capacidade do aparelho (BTU)</label>
+        <select id='capacidadeBtu'>
+          <option value='9000'>9000 BTU</option>
+          <option value='12000' selected>12000 BTU</option>
+          <option value='18000'>18000 BTU</option>
+          <option value='24000'>24000 BTU</option>
+          <option value='30000'>30000 BTU</option>
+          <option value='36000'>36000 BTU</option>
+        </select>
+      </div>
+      <div class='field'>
+        <label for='tipoAparelho'>Tipo do aparelho (opcional)</label>
+        <select id='tipoAparelho'>
+          <option value='inverter' selected>Inverter</option>
+          <option value='convencional'>Convencional</option>
+        </select>
       </div>
       <div class='field'>
         <label for='horasDia'>Horas de uso por dia</label>
-        <input id='horasDia' type='number' step='0.1' min='0' />
+        <input id='horasDia' type='number' step='0.1' min='0' value='8' />
       </div>
       <div class='field'>
         <label for='diasMes'>Dias de uso no mês</label>
@@ -44,10 +132,69 @@
       </div>
       <div class='field'>
         <label for='tarifa'>Tarifa (R$/kWh)</label>
-        <input id='tarifa' type='number' step='0.01' min='0' />
+        <input id='tarifa' type='number' step='0.01' min='0' value='0.95' />
       </div>
       <button class='btn' id='calcularBtn'>Calcular custo</button>
       <p class='result' id='resultado'></p>
+      <p><small><b>Observação:</b> esta simulação não considera a bandeira tarifária (Verde, Amarela ou Vermelha).</small></p>
+      <p class='helper'>Dica: a potência é estimada automaticamente a partir do BTU usando a tabela de referência.</p>
+    </section>
+
+    <section class='card'>
+      <h2>Potência média por capacidade (BTU)</h2>
+      <div class='table-scroll'>
+        <table class='data-table'>
+          <thead>
+            <tr>
+              <th>Capacidade</th>
+              <th>Potência média (W)</th>
+              <th>Consumo por hora (kWh)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9000 BTU</td>
+              <td><strong>700 W</strong></td>
+              <td>0,7 kWh</td>
+            </tr>
+            <tr>
+              <td>12000 BTU</td>
+              <td><strong>1000 W</strong></td>
+              <td>1,0 kWh</td>
+            </tr>
+            <tr>
+              <td>18000 BTU</td>
+              <td><strong>1500 W</strong></td>
+              <td>1,5 kWh</td>
+            </tr>
+            <tr>
+              <td>24000 BTU</td>
+              <td><strong>2000 W</strong></td>
+              <td>2,0 kWh</td>
+            </tr>
+            <tr>
+              <td>30000 BTU</td>
+              <td><strong>2500 W</strong></td>
+              <td>2,5 kWh</td>
+            </tr>
+            <tr>
+              <td>36000 BTU</td>
+              <td><strong>3000 W</strong></td>
+              <td>3,0 kWh</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Esses valores funcionam bem para aparelhos <strong>inverter modernos</strong>, como os da LG, Samsung, Daikin e Midea.</p>
+    </section>
+
+    <section class='card'>
+      <h2>Como estimar o consumo do ar-condicionado</h2>
+      <p>A fórmula usada nesta calculadora é simples: <strong>(Potência em W x Horas por dia x Dias do mês) / 1000</strong>. O resultado é o consumo mensal em kWh.</p>
+      <p>Depois, basta multiplicar o consumo pela tarifa de energia para obter o custo estimado no mês. Para comparar cenários, altere as horas de uso e veja o impacto no valor final.</p>
+      <p><strong>Inverter x Convencional:</strong> no modo Inverter, o compressor ajusta a potência ao ambiente e tende a manter um consumo mais estável ao longo do dia. Já no aparelho Convencional, os ciclos de liga/desliga costumam elevar o gasto médio. Por isso, esta calculadora aplica um fator maior para a opção Convencional.</p>
+      <p class='helper'><strong>Observação:</strong> esta simulação não considera a bandeira tarifária (Verde, Amarela ou Vermelha).</p>
+      <p>Veja também: <a href='./simulador-conta-de-luz.html'>simulador de conta de luz</a> e <a href='./kwh.html'>calculadora de kWh</a>.</p>
     </section>
   </main>
 
