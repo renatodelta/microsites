@@ -2,7 +2,7 @@
   const CONSENT_KEY = 'cdc_cookie_consent_v1';
   const CONSENT_COOKIE = 'cdc_cookie_consent';
   const CONSENT_MAX_AGE_SECONDS = 60 * 60 * 24 * 180;
-  const GTM_CONTAINER_ID = 'GTM-TKFGT7Q4';
+  const GTM_CONTAINER_ID = 'GTM-NBKQS6JP';
 
   const defaultConsent = {
     necessary: true,
