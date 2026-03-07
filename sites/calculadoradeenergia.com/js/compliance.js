@@ -2,6 +2,7 @@
   const CONSENT_KEY = 'cdc_cookie_consent_v1';
   const CONSENT_COOKIE = 'cdc_cookie_consent';
   const CONSENT_MAX_AGE_SECONDS = 60 * 60 * 24 * 180;
+  const GTM_CONTAINER_ID = 'GTM-TKFGT7Q4';
 
   const defaultConsent = {
     necessary: true,
@@ -248,6 +249,29 @@
     });
   }
 
+  function initGoogleTagManager() {
+    if (!GTM_CONTAINER_ID) return;
+    if (window.__gtmLoaded) return;
+    if (document.querySelector(`script[data-gtm-id="${GTM_CONTAINER_ID}"]`)) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.dataset.gtmId = GTM_CONTAINER_ID;
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(GTM_CONTAINER_ID)}`;
+
+    const firstScript = document.getElementsByTagName('script')[0];
+    if (firstScript && firstScript.parentNode) {
+      firstScript.parentNode.insertBefore(script, firstScript);
+    } else {
+      document.head.appendChild(script);
+    }
+
+    window.__gtmLoaded = true;
+  }
+
   function initMobileMenu() {
     const topbar = document.querySelector('.topbar');
     const nav = topbar ? topbar.querySelector('nav') : null;
@@ -299,6 +323,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    initGoogleTagManager();
     attachFormProtection();
     initMobileMenu();
 
