@@ -1,5 +1,5 @@
-﻿@import url('../../../shared/css/base.css');
-@import url('../../../shared/css/compliance.css');
+﻿@import url('./base.css');
+@import url('./compliance.css');
 
 :root {
   --primary: #2563eb;
