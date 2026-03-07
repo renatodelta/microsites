@@ -252,6 +252,14 @@
   function initGoogleTagManager() {
     if (!GTM_CONTAINER_ID) return;
     if (window.__gtmLoaded) return;
+    if (window.google_tag_manager && window.google_tag_manager[GTM_CONTAINER_ID]) {
+      window.__gtmLoaded = true;
+      return;
+    }
+    if (document.querySelector(`script[src*="googletagmanager.com/gtm.js?id=${GTM_CONTAINER_ID}"]`)) {
+      window.__gtmLoaded = true;
+      return;
+    }
     if (document.querySelector(`script[data-gtm-id="${GTM_CONTAINER_ID}"]`)) return;
 
     window.dataLayer = window.dataLayer || [];
