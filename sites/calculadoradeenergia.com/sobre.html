@@ -3,11 +3,98 @@
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <title>Sobre - Calculadora de Energia</title>
-  <meta name='description' content='Saiba mais sobre o projeto Calculadora de Energia.' />
+  <title>Sobre o Calculadora de Energia | Missao, Metodologia e Conteudo</title>
+  <meta name='description' content='Conheca o projeto Calculadora de Energia: nossa missao, metodologia de calculo, principios editoriais e como produzimos simuladores e conteudos confiaveis para economia de energia.' />
+  <meta name='robots' content='index,follow,max-image-preview:large' />
+  <link rel='canonical' href='https://calculadoradeenergia.com/sobre.html' />
   <meta name='adsense-client' content='ca-pub-0000000000000000' />
   <link rel='icon' type='image/svg+xml' href='./assets/favicon.svg' />
   <link rel='stylesheet' href='./css/theme.css' />
+  <style>
+    .about-hero {
+      background: linear-gradient(165deg, #0b2f44 0%, #11678a 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(103, 232, 249, 0.35);
+      padding: 30px 32px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-hero h1 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+    }
+
+    .about-hero p {
+      margin: 0;
+      color: #d9f1fb;
+      line-height: 1.68;
+      max-width: 860px;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about-card {
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+    }
+
+    .about-card h2 {
+      margin: 0 0 12px;
+      color: #0f2740;
+    }
+
+    .about-card p,
+    .about-card li {
+      color: #1e293b;
+      line-height: 1.72;
+    }
+
+    .about-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .about-highlights {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 14px;
+    }
+
+    .about-pill {
+      border-radius: 12px;
+      border: 1px solid #bae6fd;
+      background: #f0f9ff;
+      padding: 12px 14px;
+      font-weight: 700;
+      color: #0c4a6e;
+    }
+
+    .about-note {
+      margin-top: 12px;
+      border-left: 4px solid #0ea5e9;
+      border-radius: 12px;
+      background: #f0f9ff;
+      padding: 12px 14px;
+    }
+
+    @media (max-width: 640px) {
+      .about-hero,
+      .about-card {
+        padding: 20px;
+      }
+    }
+  </style>
   <script defer src='./js/compliance.js'></script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -38,11 +125,55 @@
   </header>
 
   <main class='container hero'>
-    <h1>Sobre</h1>
-    <section class='card'>
-      <p>O Calculadora de Energia é um projeto focado em conteúdo e ferramentas para ajudar pessoas a entender consumo elétrico, custos mensais e oportunidades de economia.</p>
-      <p>Nosso objetivo é oferecer calculadoras simples, diretas e úteis para tomada de decisão no dia a dia.</p>
+    <section class='about-hero'>
+      <h1>Sobre o Calculadora de Energia</h1>
+      <p>O Calculadora de Energia e um projeto educativo criado para ajudar pessoas e familias a entender melhor o consumo eletrico, simular gastos e tomar decisoes mais inteligentes para economizar na conta de luz.</p>
     </section>
+
+    <div class='about-grid'>
+      <section class='about-card' aria-labelledby='missao'>
+        <h2 id='missao'>Nossa missao</h2>
+        <p>Transformar informacoes tecnicas de energia em orientacoes praticas e acessiveis. Queremos que qualquer pessoa consiga comparar cenarios, identificar desperdicios e planejar melhorias de eficiencia energetica sem depender de planilhas complexas.</p>
+        <div class='about-highlights'>
+          <div class='about-pill'>Linguagem simples e direta</div>
+          <div class='about-pill'>Ferramentas praticas para o dia a dia</div>
+          <div class='about-pill'>Conteudo focado em utilidade real</div>
+        </div>
+      </section>
+
+      <section class='about-card' aria-labelledby='metodologia'>
+        <h2 id='metodologia'>Como calculamos os resultados</h2>
+        <p>Nossas calculadoras usam formulas padrao de mercado para estimar consumo (kWh), custo mensal e comparativos de economia. Os resultados sao aproximados e dependem das informacoes fornecidas pelo usuario, como potencia de equipamentos, tempo de uso e tarifa de energia da regiao.</p>
+        <ul>
+          <li>consumo estimado com base em potencia x tempo de uso;</li>
+          <li>simulacoes com tarifas informadas pelo proprio usuario;</li>
+          <li>comparativos de custo entre cenarios de uso e eficiencia.</li>
+        </ul>
+        <p class='about-note'><strong>Importante:</strong> os valores apresentados sao estimativas para apoio a decisao e nao substituem faturas oficiais, laudos tecnicos ou orientacoes profissionais especializadas.</p>
+      </section>
+
+      <section class='about-card' aria-labelledby='principios'>
+        <h2 id='principios'>Principios editoriais e de confianca</h2>
+        <p>Buscamos manter um ambiente confiavel, com conteudo original, atualizado e alinhado a boas praticas de qualidade para sites informativos e de utilidade publica.</p>
+        <ul>
+          <li>publicacao de conteudo claro, autoral e orientado ao usuario;</li>
+          <li>revisao periodica de paginas e simuladores;</li>
+          <li>transparencia sobre estimativas, limitacoes e publicidade;</li>
+          <li>respeito a privacidade e aos direitos dos visitantes.</li>
+        </ul>
+      </section>
+
+      <section class='about-card' aria-labelledby='publicidade'>
+        <h2 id='publicidade'>Publicidade e sustentabilidade do projeto</h2>
+        <p>Para manter o site gratuito e em constante evolucao, podemos exibir anuncios por meio de parceiros como o Google AdSense. Isso nos ajuda a financiar hospedagem, desenvolvimento e atualizacao de novos recursos.</p>
+        <p>Nos comprometemos com praticas responsaveis de monetizacao, sem promessas enganosas, sem incentivo a cliques invalidos e com foco em experiencia positiva para o usuario.</p>
+      </section>
+
+      <section class='about-card' aria-labelledby='contato-suporte'>
+        <h2 id='contato-suporte'>Suporte, feedback e melhorias</h2>
+        <p>Seu feedback e essencial para melhorar nossos calculos e conteudos. Se encontrar algum erro, tiver sugestao de nova calculadora ou quiser propor parceria editorial, fale conosco pela pagina <a href='./contato.html'>Contato</a>.</p>
+      </section>
+    </div>
   </main>
 
   <footer class='site-footer'>
