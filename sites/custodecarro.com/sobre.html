@@ -4,29 +4,152 @@
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <title>Sobre o Custo de Carro | Missão, Metodologia e Conteúdo</title>
-  <meta name='description' content='Conheça a missão do Custo de Carro, nossa metodologia de simulação e os princípios editoriais para conteúdo útil sobre custos automotivos.' />
+  <meta name='description' content='Conheça o projeto Custo de Carro: missão, metodologia de cálculo, princípios editoriais e como produzimos simuladores e conteúdos confiáveis sobre custos automotivos.' />
   <meta name='robots' content='index,follow,max-image-preview:large' />
   <link rel='canonical' href='https://custodecarro.com/sobre' />
+  <meta property='og:url' content='https://custodecarro.com/sobre' />
   <meta name='adsense-client' content='ca-pub-0000000000000000' />
   <link rel='icon' type='image/svg+xml' href='./assets/favicon.svg' />
   <link rel='stylesheet' href='./css/theme.css' />
+  <style>
+    .about-hero {
+      background: linear-gradient(160deg, #3a1f66 0%, #8b5cf6 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(251, 146, 60, 0.4);
+      padding: 30px 32px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-hero h1 {
+      margin: 0 0 10px;
+      color: #ffffff;
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+    }
+
+    .about-hero p {
+      margin: 0;
+      color: #f7ecff;
+      line-height: 1.68;
+      max-width: 860px;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about-card {
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+    }
+
+    .about-card h2 {
+      margin: 0 0 12px;
+      color: #24113f;
+    }
+
+    .about-card p,
+    .about-card li {
+      color: #1e293b;
+      line-height: 1.72;
+    }
+
+    .about-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .about-highlights {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 14px;
+    }
+
+    .about-pill {
+      border-radius: 12px;
+      border: 1px solid #fed7aa;
+      background: #fff7ed;
+      padding: 12px 14px;
+      font-weight: 700;
+      color: #9a3412;
+    }
+
+    .about-note {
+      margin-top: 12px;
+      border-left: 4px solid #f97316;
+      border-radius: 12px;
+      background: #fff7ed;
+      padding: 12px 14px;
+    }
+
+    @media (max-width: 640px) {
+      .about-hero,
+      .about-card {
+        padding: 20px;
+      }
+    }
+  </style>
   <script defer src='./js/compliance.js'></script>
 </head>
 <body>
   <header><div class='container topbar'><a class='brand' href='./index.html'><img class='brand-logo' src='./assets/logo.svg' alt='Custo de Carro' /></a><nav><a href='./calculadoras/index.html'>Calculadoras</a><a href='./artigos/index.html'>Artigos</a><a href='./politica-de-privacidade.html'>Política de Privacidade</a><a href='./contato.html'>Contato</a><a href='./sobre.html'>Sobre</a></nav></div></header>
   <main class='container hero'>
-    <article class='card'>
+    <section class='about-hero'>
       <h1>Sobre o Custo de Carro</h1>
-      <p>O Custo de Carro é um projeto educativo criado para ajudar motoristas e famílias a entender quanto custa manter um veículo no Brasil.</p>
-      <h2>Nossa missão</h2>
-      <p>Transformar dados de gasto automotivo em decisões financeiras claras e práticas.</p>
-      <h2>Como fazemos as simulações</h2>
-      <p>As calculadoras usam estimativas com base em quilometragem, consumo, preço de combustível, seguro, manutenção e perfil de uso.</p>
-      <h2>Princípios editoriais</h2>
-      <p>Publicamos conteúdo original, claro e orientado à utilidade real do usuário.</p>
-      <h2>Contato</h2>
-      <p>Se tiver sugestões de melhorias, fale conosco em <a href='./contato.html'>Contato</a>.</p>
-    </article>
+      <p>O Custo de Carro é um projeto educativo criado para ajudar pessoas e famílias a entender melhor quanto custa manter um veículo no Brasil, simular cenários e tomar decisões financeiras com mais clareza.</p>
+    </section>
+
+    <div class='about-grid'>
+      <section class='about-card' aria-labelledby='missao'>
+        <h2 id='missao'>Nossa missão</h2>
+        <p>Transformar informações de custos automotivos em orientações práticas e acessíveis. Queremos que qualquer pessoa consiga comparar alternativas, enxergar o custo total de propriedade e planejar melhor seu orçamento.</p>
+        <div class='about-highlights'>
+          <div class='about-pill'>Linguagem simples e direta</div>
+          <div class='about-pill'>Ferramentas práticas para o dia a dia</div>
+          <div class='about-pill'>Conteúdo focado em utilidade real</div>
+        </div>
+      </section>
+
+      <section class='about-card' aria-labelledby='metodologia'>
+        <h2 id='metodologia'>Como calculamos os resultados</h2>
+        <p>Nossas calculadoras usam fórmulas de estimativa para custo mensal, anual e por quilômetro, considerando combustível, manutenção, seguro, IPVA, depreciação e perfil de uso.</p>
+        <ul>
+          <li>simulações com dados informados pelo próprio usuário;</li>
+          <li>comparativos entre cenários de uso e deslocamento;</li>
+          <li>visão consolidada de custos fixos e variáveis.</li>
+        </ul>
+        <p class='about-note'><strong>Importante:</strong> os valores apresentados são estimativas para apoio à decisão e não substituem cotações oficiais, contratos, avaliações técnicas ou aconselhamento financeiro profissional.</p>
+      </section>
+
+      <section class='about-card' aria-labelledby='principios'>
+        <h2 id='principios'>Princípios editoriais e de confiança</h2>
+        <p>Buscamos manter um ambiente confiável, com conteúdo original, atualizado e orientado a decisões práticas para quem precisa entender custos de mobilidade.</p>
+        <ul>
+          <li>conteúdo claro, autoral e centrado no usuário;</li>
+          <li>revisão periódica de calculadoras e páginas de apoio;</li>
+          <li>transparência sobre estimativas, limitações e publicidade;</li>
+          <li>respeito à privacidade e aos direitos dos visitantes.</li>
+        </ul>
+      </section>
+
+      <section class='about-card' aria-labelledby='publicidade'>
+        <h2 id='publicidade'>Publicidade e sustentabilidade do projeto</h2>
+        <p>Para manter o site gratuito e em evolução contínua, podemos exibir anúncios por meio de parceiros como o Google AdSense. Isso ajuda a financiar hospedagem, desenvolvimento e manutenção dos conteúdos.</p>
+        <p>Nos comprometemos com práticas responsáveis de monetização, sem promessas enganosas e sem incentivo a cliques inválidos.</p>
+      </section>
+
+      <section class='about-card' aria-labelledby='contato-suporte'>
+        <h2 id='contato-suporte'>Suporte, feedback e melhorias</h2>
+        <p>Seu feedback é essencial para melhorar nossos cálculos e conteúdos. Se encontrar algum erro ou quiser sugerir novas calculadoras, fale conosco em <a href='./contato.html'>Contato</a>.</p>
+      </section>
+    </div>
   </main>
   <footer class='site-footer'><div class='container site-footer__inner'><p class='site-footer__copy'>© 2026 Custo de Carro - Todos os direitos reservados.</p><p class='site-footer__links'><a href='./sobre.html'>Sobre</a><span>|</span><a href='./contato.html'>Contato</a><span>|</span><a href='./politica-de-privacidade.html'>Política de Privacidade</a></p></div></footer>
 </body>
