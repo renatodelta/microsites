@@ -3,31 +3,490 @@
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <title>Calculadora de financiamento de carro | Custo de Carro</title>
-  <meta name='description' content='Calculadora de financiamento de carro: Parcela, juros e custo total.' />
+  <title>Calculadora de financiamento de carro (simule parcelas) | Custo de Carro</title>
+  <meta name='description' content='Simule financiamento de carro com Tabela Price: valor financiado, parcela mensal, total pago e total de juros em segundos.' />
   <meta name='robots' content='index,follow,max-image-preview:large' />
   <link rel='canonical' href='https://custodecarro.com/calculadoras/financiamento-de-carro' />
+  <meta property='og:title' content='Calculadora de financiamento de carro (simule parcelas)' />
+  <meta property='og:description' content='Descubra quanto vai pagar por mês e quanto o carro custará no total.' />
+  <meta property='og:url' content='https://custodecarro.com/calculadoras/financiamento-de-carro' />
   <meta name='adsense-client' content='ca-pub-0000000000000000' />
   <link rel='icon' type='image/svg+xml' href='../assets/favicon.svg' />
   <link rel='stylesheet' href='../css/theme.css' />
-  <script defer src='../js/calculadoras-carro.js'></script>
   <script defer src='../js/compliance.js'></script>
+  <style>
+    .calc-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .quick-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .quick-buttons button {
+      border: 1px solid var(--border);
+      background: #ffffff;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .quick-buttons button.active {
+      border-color: var(--primary);
+      color: #ffffff;
+      background: var(--primary);
+    }
+
+    .range-wrap {
+      display: grid;
+      gap: 8px;
+    }
+
+    .range-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .range-wrap input[type='range'] {
+      width: 100%;
+      accent-color: var(--primary);
+    }
+
+    .results-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .result-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: #ffffff;
+    }
+
+    .result-label {
+      margin: 0 0 6px;
+      font-size: 0.88rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-weight: 700;
+    }
+
+    .result-value {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.2;
+    }
+
+    .result-meta {
+      margin: 12px 0 0;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    .chart-box {
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    .stack {
+      width: 100%;
+      height: 16px;
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+      background: #e2e8f0;
+    }
+
+    .stack-principal {
+      background: var(--primary);
+      width: 50%;
+    }
+
+    .stack-juros {
+      background: var(--secondary);
+      width: 50%;
+    }
+
+    .legend {
+      margin-top: 10px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: #334155;
+      font-size: 0.92rem;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .table-wrap {
+      margin-top: 14px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    th {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #475569;
+      background: #f8fafc;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .seo-block {
+      margin-top: 22px;
+    }
+
+    .seo-block h2 {
+      margin-bottom: 8px;
+    }
+
+    .seo-block p {
+      margin-top: 0;
+    }
+
+    @media (max-width: 920px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header><div class='container topbar'><a class='brand' href='../index.html'><img class='brand-logo' src='../assets/logo.svg' alt='Custo de Carro' /></a><nav><a href='./index.html'>Calculadoras</a><a href='../artigos/index.html'>Artigos</a><a href='../politica-de-privacidade.html'>Política de Privacidade</a><a href='../contato.html'>Contato</a><a href='../sobre.html'>Sobre</a></nav></div></header>
+
   <main class='container hero'>
-    <h1>Calculadora de financiamento de carro</h1>
-    <p>Parcela, juros e custo total.</p>
-    <section class='card'>
-      <form class='tool-form' data-calc='simulador-principal'>
-        <div class='field'><label for='valorCombustivel'>Preço do combustível (R$)</label><input type='number' step='0.01' min='0' id='valorCombustivel' name='valorCombustivel' required /></div>
-        <div class='field'><label for='consumo'>Consumo do carro (km/l)</label><input type='number' step='0.1' min='0.1' id='consumo' name='consumo' required /></div>
-        <div class='field'><label for='kmMes'>Quilometragem por mês (km)</label><input type='number' step='1' min='0' id='kmMes' name='kmMes' required /></div>
-        <button class='btn' type='submit'>Calcular</button>
-      </form>
-      <output class='result' aria-live='polite'></output>
+    <h1>Calculadora de financiamento de carro (simule parcelas)</h1>
+    <p>Descubra em segundos quanto você vai pagar por mês e qual será o custo total do financiamento.</p>
+
+    <div class='calc-grid'>
+      <section class='card'>
+        <form id='financiamentoForm' class='tool-form' novalidate>
+          <div class='field'>
+            <label for='valorCarro'>Valor do carro (R$)</label>
+            <input type='number' id='valorCarro' min='0' step='0.01' value='60000' required />
+          </div>
+
+          <div class='field'>
+            <label for='entrada'>Entrada (R$)</label>
+            <input type='number' id='entrada' min='0' step='0.01' value='10000' required />
+          </div>
+
+          <div class='field range-wrap'>
+            <div class='range-row'>
+              <label for='entradaPercent'>Simular entrada por percentual</label>
+              <strong id='entradaPercentLabel'>16,7%</strong>
+            </div>
+            <input type='range' id='entradaPercent' min='0' max='50' step='1' value='17' />
+          </div>
+
+          <div class='field'>
+            <label for='taxaJuros'>Taxa de juros mensal (%)</label>
+            <input type='number' id='taxaJuros' min='0' step='0.01' value='1.5' required />
+          </div>
+
+          <div class='field'>
+            <label for='prazo'>Prazo do financiamento (meses)</label>
+            <input type='number' id='prazo' min='1' step='1' value='48' required />
+            <div class='quick-buttons' id='prazoRapido'>
+              <button type='button' data-prazo='36'>36 meses</button>
+              <button type='button' data-prazo='48' class='active'>48 meses</button>
+              <button type='button' data-prazo='60'>60 meses</button>
+              <button type='button' data-prazo='72'>72 meses</button>
+            </div>
+          </div>
+
+          <div class='field'>
+            <label for='taxaAdm'>Taxa administrativa (R$, opcional)</label>
+            <input type='number' id='taxaAdm' min='0' step='0.01' value='0' />
+          </div>
+
+          <div class='field'>
+            <label for='seguro'>Seguro do contrato (R$, opcional)</label>
+            <input type='number' id='seguro' min='0' step='0.01' value='0' />
+          </div>
+
+          <div class='field'>
+            <label for='tarifaBancaria'>Tarifa bancária (R$, opcional)</label>
+            <input type='number' id='tarifaBancaria' min='0' step='0.01' value='0' />
+          </div>
+
+          <button class='btn' type='submit'>Calcular financiamento</button>
+        </form>
+      </section>
+
+      <section class='card'>
+        <h2>Resultado</h2>
+        <div class='results-grid'>
+          <article class='result-card'>
+            <p class='result-label'>Valor financiado</p>
+            <p class='result-value' id='outFinanciado'>R$ 0,00</p>
+          </article>
+          <article class='result-card'>
+            <p class='result-label'>Parcela mensal</p>
+            <p class='result-value' id='outParcela'>R$ 0,00</p>
+          </article>
+          <article class='result-card'>
+            <p class='result-label'>Total pago no financiamento</p>
+            <p class='result-value' id='outTotalPago'>R$ 0,00</p>
+          </article>
+          <article class='result-card'>
+            <p class='result-label'>Total de juros pagos</p>
+            <p class='result-value' id='outJuros'>R$ 0,00</p>
+          </article>
+        </div>
+        <p class='result-meta' id='resultMeta'>Preencha os campos para simular.</p>
+
+        <div class='chart-box'>
+          <strong>Gráfico de juros vs principal</strong>
+          <div class='stack' aria-hidden='true'>
+            <div class='stack-principal' id='barPrincipal'></div>
+            <div class='stack-juros' id='barJuros'></div>
+          </div>
+          <div class='legend'>
+            <span><span class='dot' style='background: var(--primary);'></span>Principal</span>
+            <span><span class='dot' style='background: var(--secondary);'></span>Juros + taxas</span>
+          </div>
+        </div>
+
+        <div class='table-wrap'>
+          <table>
+            <thead>
+              <tr>
+                <th>Prazo</th>
+                <th>Parcela</th>
+                <th>Total pago</th>
+              </tr>
+            </thead>
+            <tbody id='comparacaoBody'>
+              <tr><td>36 meses</td><td>R$ 0,00</td><td>R$ 0,00</td></tr>
+              <tr><td>48 meses</td><td>R$ 0,00</td><td>R$ 0,00</td></tr>
+              <tr><td>60 meses</td><td>R$ 0,00</td><td>R$ 0,00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <section class='seo-block'>
+      <h2>Como funciona financiamento de carro</h2>
+      <p>Na prática, você paga uma entrada e financia o restante em parcelas mensais. Em grande parte dos contratos, o cálculo é feito pela Tabela Price, que mantém parcelas fixas ao longo do prazo.</p>
+    </section>
+
+    <section class='seo-block'>
+      <h2>Como calcular parcela</h2>
+      <p>Usamos a fórmula da Tabela Price: PMT = (PV * i) / (1 - (1 + i)^-n). Onde PV é o valor financiado, i é a taxa mensal e n é o número de parcelas.</p>
+    </section>
+
+    <section class='seo-block'>
+      <h2>Qual a melhor entrada</h2>
+      <p>Quanto maior a entrada, menor o valor financiado e menores os juros totais. Use o slider para testar rapidamente entradas entre 0% e 50% e comparar o impacto no custo final.</p>
+    </section>
+
+    <section class='seo-block'>
+      <h2>Simulação de financiamento</h2>
+      <p>Faça simulações de 36, 48, 60 e 72 meses para equilibrar parcela mensal e total pago. Parcelas menores geralmente aumentam o custo total.</p>
     </section>
   </main>
+
   <footer class='site-footer'><div class='container site-footer__inner'><p class='site-footer__copy'>© 2026 Custo de Carro - Todos os direitos reservados.</p><p class='site-footer__links'><a href='../sobre.html'>Sobre</a><span>|</span><a href='../contato.html'>Contato</a><span>|</span><a href='../politica-de-privacidade.html'>Política de Privacidade</a></p></div></footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('financiamentoForm');
+      var valorCarroInput = document.getElementById('valorCarro');
+      var entradaInput = document.getElementById('entrada');
+      var entradaPercentInput = document.getElementById('entradaPercent');
+      var entradaPercentLabel = document.getElementById('entradaPercentLabel');
+      var taxaJurosInput = document.getElementById('taxaJuros');
+      var prazoInput = document.getElementById('prazo');
+      var taxaAdmInput = document.getElementById('taxaAdm');
+      var seguroInput = document.getElementById('seguro');
+      var tarifaBancariaInput = document.getElementById('tarifaBancaria');
+      var comparacaoBody = document.getElementById('comparacaoBody');
+      var prazoButtons = document.querySelectorAll('#prazoRapido button');
+
+      var outFinanciado = document.getElementById('outFinanciado');
+      var outParcela = document.getElementById('outParcela');
+      var outTotalPago = document.getElementById('outTotalPago');
+      var outJuros = document.getElementById('outJuros');
+      var resultMeta = document.getElementById('resultMeta');
+      var barPrincipal = document.getElementById('barPrincipal');
+      var barJuros = document.getElementById('barJuros');
+
+      function num(el) {
+        return Number(el.value || 0);
+      }
+
+      function money(value) {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+      }
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function pricePayment(pv, i, n) {
+        if (n <= 0) return 0;
+        if (i === 0) return pv / n;
+        return (pv * i) / (1 - Math.pow(1 + i, -n));
+      }
+
+      function updateSliderFromEntrada() {
+        var valorCarro = num(valorCarroInput);
+        var entrada = num(entradaInput);
+        var percent = valorCarro > 0 ? (entrada / valorCarro) * 100 : 0;
+        percent = clamp(percent, 0, 50);
+        entradaPercentInput.value = String(Math.round(percent));
+        entradaPercentLabel.textContent = percent.toFixed(1).replace('.', ',') + '%';
+      }
+
+      function updateEntradaFromSlider() {
+        var valorCarro = num(valorCarroInput);
+        var percent = num(entradaPercentInput);
+        var entrada = valorCarro * (percent / 100);
+        entradaInput.value = entrada.toFixed(2);
+        entradaPercentLabel.textContent = percent.toFixed(1).replace('.', ',') + '%';
+      }
+
+      function runCalculation(prazoOverride) {
+        var valorCarro = num(valorCarroInput);
+        var entrada = num(entradaInput);
+        var taxaJuros = num(taxaJurosInput) / 100;
+        var prazo = prazoOverride || Math.round(num(prazoInput));
+        var taxaAdm = num(taxaAdmInput);
+        var seguro = num(seguroInput);
+        var tarifa = num(tarifaBancariaInput);
+        var taxasExtras = taxaAdm + seguro + tarifa;
+
+        if (prazoOverride) {
+          prazoInput.value = String(prazoOverride);
+        }
+
+        if (valorCarro <= 0 || prazo <= 0 || taxaJuros < 0) {
+          resultMeta.textContent = 'Informe valor do carro, taxa e prazo com números válidos.';
+          return;
+        }
+
+        if (entrada < 0 || entrada >= valorCarro) {
+          resultMeta.textContent = 'A entrada deve ser maior ou igual a zero e menor que o valor do carro.';
+          return;
+        }
+
+        var financiado = valorCarro - entrada;
+        var parcelaBase = pricePayment(financiado, taxaJuros, prazo);
+        var totalSemExtras = parcelaBase * prazo;
+        var totalPago = totalSemExtras + taxasExtras;
+        var parcelaMensal = totalPago / prazo;
+        var jurosTotal = totalPago - financiado;
+
+        outFinanciado.textContent = money(financiado);
+        outParcela.textContent = money(parcelaMensal);
+        outTotalPago.textContent = money(totalPago);
+        outJuros.textContent = money(jurosTotal);
+
+        resultMeta.textContent = 'Simulação pela Tabela Price. Taxas extras incluídas no total e rateadas no valor mensal.';
+
+        var principalPct = totalPago > 0 ? (financiado / totalPago) * 100 : 0;
+        var jurosPct = 100 - principalPct;
+        barPrincipal.style.width = principalPct.toFixed(2) + '%';
+        barJuros.style.width = jurosPct.toFixed(2) + '%';
+
+        var prazos = [36, 48, 60];
+        comparacaoBody.innerHTML = prazos.map(function (n) {
+          var pBase = pricePayment(financiado, taxaJuros, n);
+          var tPago = pBase * n + taxasExtras;
+          var pMensal = tPago / n;
+          return '<tr><td>' + n + ' meses</td><td>' + money(pMensal) + '</td><td>' + money(tPago) + '</td></tr>';
+        }).join('');
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        runCalculation();
+      });
+
+      valorCarroInput.addEventListener('input', function () {
+        updateEntradaFromSlider();
+        runCalculation();
+      });
+
+      entradaInput.addEventListener('input', function () {
+        updateSliderFromEntrada();
+        runCalculation();
+      });
+
+      entradaPercentInput.addEventListener('input', function () {
+        updateEntradaFromSlider();
+        runCalculation();
+      });
+
+      [taxaJurosInput, prazoInput, taxaAdmInput, seguroInput, tarifaBancariaInput].forEach(function (el) {
+        el.addEventListener('input', function () {
+          runCalculation();
+        });
+      });
+
+      prazoButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var prazo = Number(button.dataset.prazo);
+          prazoButtons.forEach(function (b) { b.classList.remove('active'); });
+          button.classList.add('active');
+          runCalculation(prazo);
+        });
+      });
+
+      updateSliderFromEntrada();
+      runCalculation();
+    })();
+  </script>
 </body>
 </html>
