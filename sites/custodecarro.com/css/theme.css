@@ -93,6 +93,18 @@
   border-bottom: 0;
 }
 
+.article-table tfoot {
+  background: #f8fafc;
+  border-top: 2px solid #e2e8f0;
+}
+
+.article-table tfoot td {
+  padding: 10px 14px;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
 @media (max-width: 640px) {
   .site-footer {
     margin-top: 28px;
