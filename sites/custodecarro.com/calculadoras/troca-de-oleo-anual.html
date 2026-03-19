@@ -17,15 +17,19 @@
   <header><div class='container topbar'><a class='brand' href='../index.html'><img class='brand-logo' src='../assets/logo.svg' alt='Custo de Carro' /></a><nav><a href='./index.html'>Calculadoras</a><a href='../artigos/index.html'>Artigos</a><a href='../politica-de-privacidade.html'>Política de Privacidade</a><a href='../contato.html'>Contato</a><a href='../sobre.html'>Sobre</a></nav></div></header>
   <main class='container hero'>
     <h1>Calculadora de troca de óleo anual</h1>
-    <p>Periodicidade e custo total.</p>
     <section class='card'>
-      <form class='tool-form' data-calc='simulador-principal'>
-        <div class='field'><label for='valorCombustivel'>Preço do combustível (R$)</label><input type='number' step='0.01' min='0' id='valorCombustivel' name='valorCombustivel' required /></div>
-        <div class='field'><label for='consumo'>Consumo do carro (km/l)</label><input type='number' step='0.1' min='0.1' id='consumo' name='consumo' required /></div>
-        <div class='field'><label for='kmMes'>Quilometragem por mês (km)</label><input type='number' step='1' min='0' id='kmMes' name='kmMes' required /></div>
-        <button class='btn' type='submit'>Calcular</button>
+      <form class='tool-form' id='calcForm' data-calc='troca-oleo'>
+        <div class='field'>
+          <label for='trocas'>Trocas de óleo por ano</label>
+          <input type='number' step='1' min='0' id='trocas' name='trocas' required />
+        </div>
+        <div class='field'>
+          <label for='custoTroca'>Custo médio por troca (R$)</label>
+          <input type='number' step='0.01' min='0' id='custoTroca' name='custoTroca' required />
+        </div>
+        <button class='btn' type='submit'>Calcular custo anual</button>
       </form>
-      <output class='result' aria-live='polite'></output>
+      <p class='result' id='resultado' aria-live='polite'></p>
     </section>
   </main>
   <footer class='site-footer'><div class='container site-footer__inner'><p class='site-footer__copy'>© 2026 Custo de Carro - Todos os direitos reservados.</p><p class='site-footer__links'><a href='../sobre.html'>Sobre</a><span>|</span><a href='../contato.html'>Contato</a><span>|</span><a href='../politica-de-privacidade.html'>Política de Privacidade</a></p></div></footer>
