@@ -17,15 +17,14 @@
   <header><div class='container topbar'><a class='brand' href='../index.html'><img class='brand-logo' src='../assets/logo.svg' alt='Custo de Carro' /></a><nav><a href='./index.html'>Calculadoras</a><a href='../artigos/index.html'>Artigos</a><a href='../politica-de-privacidade.html'>Política de Privacidade</a><a href='../contato.html'>Contato</a><a href='../sobre.html'>Sobre</a></nav></div></header>
   <main class='container hero'>
     <h1>Calculadora de IPVA do carro</h1>
-    <p>Estimativa por valor venal e alíquota.</p>
+    <p>Calcule o valor do imposto por valor venal e alíquota.</p>
     <section class='card'>
-      <form class='tool-form' data-calc='simulador-principal'>
-        <div class='field'><label for='valorCombustivel'>Preço do combustível (R$)</label><input type='number' step='0.01' min='0' id='valorCombustivel' name='valorCombustivel' required /></div>
-        <div class='field'><label for='consumo'>Consumo do carro (km/l)</label><input type='number' step='0.1' min='0.1' id='consumo' name='consumo' required /></div>
-        <div class='field'><label for='kmMes'>Quilometragem por mês (km)</label><input type='number' step='1' min='0' id='kmMes' name='kmMes' required /></div>
+      <form class='tool-form' id='calcForm' data-calc='ipva'>
+        <div class='field'><label for='valorVenal'>Valor do veículo (R$)</label><input type='number' step='0.01' min='0' id='valorVenal' name='valorVenal' required /></div>
+        <div class='field'><label for='aliquota'>Alíquota do IPVA (%)</label><input type='number' step='0.01' min='0' max='100' id='aliquota' name='aliquota' required /></div>
         <button class='btn' type='submit'>Calcular</button>
       </form>
-      <output class='result' aria-live='polite'></output>
+      <output class='result' id='resultado' aria-live='polite'></output>
     </section>
   </main>
   <footer class='site-footer'><div class='container site-footer__inner'><p class='site-footer__copy'>© 2026 Custo de Carro - Todos os direitos reservados.</p><p class='site-footer__links'><a href='../sobre.html'>Sobre</a><span>|</span><a href='../contato.html'>Contato</a><span>|</span><a href='../politica-de-privacidade.html'>Política de Privacidade</a></p></div></footer>
