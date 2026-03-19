@@ -178,13 +178,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       
       const estadoPartes = estadoSelect.value.split('-');
-      const aliquotaTexto = estadoPartes[1].replace('.', ',');
       const aliquota = parseFloat(estadoPartes[1]) / 100;
       const ipvaCalculado = valorVenal * aliquota;
       
       write([
-        'IPVA estimado: ' + money(ipvaCalculado),
-        '<small style="margin-top: 8px; display: block; color: #64748b; font-weight: 600;">Alíquota utilizada: ' + aliquotaTexto + '%</small>'
+        'IPVA estimado: ' + money(ipvaCalculado)
       ]);
       return;
     }
