@@ -17,43 +17,50 @@
   <header><div class='container topbar'><a class='brand' href='../index.html'><img class='brand-logo' src='../assets/logo.svg' alt='Custo de Carro' /></a><nav><a href='./index.html'>Calculadoras</a><a href='../artigos/index.html'>Artigos</a><a href='../politica-de-privacidade.html'>Política de Privacidade</a><a href='../contato.html'>Contato</a><a href='../sobre.html'>Sobre</a></nav></div></header>
   <main class='container hero'>
     <h1>Calculadora de IPVA do carro</h1>
-    <p>Calcule o valor do imposto por estado e valor venal.</p>
     <section class='card'>
       <form class='tool-form' id='calcForm' data-calc='ipva'>
-        <div class='field'><label for='valorVenal'>Valor do veículo (R$)</label><input type='number' step='0.01' min='0' id='valorVenal' name='valorVenal' required /></div>
-        <div class='field'><label for='estado'>Estado</label><select id='estado' name='estado' required>
-          <option value=''>Selecione um estado</option>
-          <option value='AC-2'>Acre (2%)</option>
-          <option value='AL-3'>Alagoas (3%)</option>
-          <option value='AP-3'>Amapá (3%)</option>
-          <option value='AM-3'>Amazonas (3%)</option>
-          <option value='BA-2.5'>Bahia (2,5%)</option>
-          <option value='CE-3'>Ceará (3%)</option>
-          <option value='DF-3.5'>Distrito Federal (3,5%)</option>
-          <option value='ES-2'>Espírito Santo (2%)</option>
-          <option value='GO-3.75'>Goiás (3,75%)</option>
-          <option value='MA-2.5'>Maranhão (2,5%)</option>
-          <option value='MT-3'>Mato Grosso (3%)</option>
-          <option value='MS-3'>Mato Grosso do Sul (3%)</option>
-          <option value='MG-4'>Minas Gerais (4%)</option>
-          <option value='PA-2.5'>Pará (2,5%)</option>
-          <option value='PB-2.5'>Paraíba (2,5%)</option>
-          <option value='PR-3.5'>Paraná (3,5%)</option>
-          <option value='PE-3'>Pernambuco (3%)</option>
-          <option value='PI-2.5'>Piauí (2,5%)</option>
-          <option value='RJ-4'>Rio de Janeiro (4%)</option>
-          <option value='RN-3'>Rio Grande do Norte (3%)</option>
-          <option value='RS-3'>Rio Grande do Sul (3%)</option>
-          <option value='RO-3'>Rondônia (3%)</option>
-          <option value='RR-3'>Roraima (3%)</option>
-          <option value='SC-2'>Santa Catarina (2%)</option>
-          <option value='SP-4'>São Paulo (4%)</option>
-          <option value='SE-2.5'>Sergipe (2,5%)</option>
-          <option value='TO-2'>Tocantins (2%)</option>
-        </select></div>
-        <button class='btn' type='submit'>Calcular</button>
+        <div class='field'>
+          <label for='valorVenal'>Valor do veículo (R$)</label>
+          <input type='number' step='0.01' min='0' id='valorVenal' name='valorVenal' required />
+        </div>
+        <div class='field'>
+          <label for='estado'>Estado</label>
+          <select id='estado' name='estado' required>
+            <option value=''>Selecione um estado</option>
+            <option value='AC-2'>Acre (2%)</option>
+            <option value='AL-3'>Alagoas (3%)</option>
+            <option value='AP-3'>Amapá (3%)</option>
+            <option value='AM-3'>Amazonas (3%)</option>
+            <option value='BA-2.5'>Bahia (2,5%)</option>
+            <option value='CE-3'>Ceará (3%)</option>
+            <option value='DF-3.5'>Distrito Federal (3,5%)</option>
+            <option value='ES-2'>Espírito Santo (2%)</option>
+            <option value='GO-3.75'>Goiás (3,75%)</option>
+            <option value='MA-2.5'>Maranhão (2,5%)</option>
+            <option value='MT-3'>Mato Grosso (3%)</option>
+            <option value='MS-3'>Mato Grosso do Sul (3%)</option>
+            <option value='MG-4'>Minas Gerais (4%)</option>
+            <option value='PA-2.5'>Pará (2,5%)</option>
+            <option value='PB-2.5'>Paraíba (2,5%)</option>
+            <option value='PR-3.5'>Paraná (3,5%)</option>
+            <option value='PE-3'>Pernambuco (3%)</option>
+            <option value='PI-2.5'>Piauí (2,5%)</option>
+            <option value='RJ-4'>Rio de Janeiro (4%)</option>
+            <option value='RN-3'>Rio Grande do Norte (3%)</option>
+            <option value='RS-3'>Rio Grande do Sul (3%)</option>
+            <option value='RO-3'>Rondônia (3%)</option>
+            <option value='RR-3'>Roraima (3%)</option>
+            <option value='SC-2'>Santa Catarina (2%)</option>
+            <option value='SP-4'>São Paulo (4%)</option>
+            <option value='SE-2.5'>Sergipe (2,5%)</option>
+            <option value='TO-2'>Tocantins (2%)</option>
+          </select>
+        </div>
+        <button class='btn' type='submit'>Calcular IPVA</button>
       </form>
-      <output class='result' id='resultado' aria-live='polite'></output>
+      <p class='result' id='resultado' aria-live='polite'></p>
+      <p><small><b>Observação:</b> esta simulação usa as alíquotas de referência de 2026. Consulte o órgão estadual para valores atualizados e descontos específicos.</small></p>
+    </section>
     </section>
   </main>
   <footer class='site-footer'><div class='container site-footer__inner'><p class='site-footer__copy'>© 2026 Custo de Carro - Todos os direitos reservados.</p><p class='site-footer__links'><a href='../sobre.html'>Sobre</a><span>|</span><a href='../contato.html'>Contato</a><span>|</span><a href='../politica-de-privacidade.html'>Política de Privacidade</a></p></div></footer>
