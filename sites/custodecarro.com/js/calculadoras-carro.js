@@ -137,10 +137,52 @@ document.addEventListener('DOMContentLoaded', function () {
     if (type === 'depreciacao') {
       const precoCarro = number('precoCarro');
       const idade = number('idade');
-      const taxa = 0.12;
-      const valorAtual = precoCarro * Math.pow(1 - taxa, idade);
+      const categoria = document.getElementById('categoria') ? document.getElementById('categoria').value : 'popular';
+      
+      const kmAnual = number('kmAnual');
+      
+      const getRate = (age, cat, mil, scenario = 'real') => {
+        let base = 0.10;
+        if (age < 1) base = 0.18;
+        else if (age < 3) base = 0.12;
+        else if (age < 5) base = 0.09;
+        else base = 0.06;
 
-      write(['Valor estimado atual: ' + money(Math.max(valorAtual, 0))]);
+        if (cat === 'premium') base += 0.03;
+        if (cat === 'suv') base += 0.01;
+        if (cat === 'popular') base -= 0.01;
+
+        if (mil > 25000) base += 0.04;
+        else if (mil > 15000) base += 0.015;
+
+        if (scenario === 'cons') return base * 0.7;
+        if (scenario === 'aggr') return base * 1.35;
+        return base;
+      };
+
+      const rateReal = getRate(idade, categoria, kmAnual, 'real');
+      const rateCons = getRate(idade, categoria, kmAnual, 'cons');
+      const rateAggr = getRate(idade, categoria, kmAnual, 'aggr');
+
+      const perdaReal = precoCarro * rateReal;
+      const valor1ano = precoCarro - perdaReal;
+      const valor2anos = valor1ano * (1 - getRate(idade + 1, categoria));
+      
+      const wrap = document.getElementById('resultadoWrap');
+      if (wrap) wrap.style.display = 'block';
+
+      write([
+        '<h3>Simulação para os Próximos 12 Meses:</h3>',
+        `<strong>Perda de valor (1 ano):</strong> <span style='color: #ef4444'>- ${money(perdaReal)}</span>`,
+        `<strong>Perda mensal média:</strong> ${money(perdaReal / 12)}`,
+        `<strong>Valor estimado em 1 ano:</strong> ${money(valor1ano)}`,
+        `<strong>Valor estimado em 2 anos:</strong> ${money(valor2anos)}`,
+        '<hr style="border:0; border-top: 1px solid #e2e8f0; margin: 15px 0;">',
+        '<h3>Cenários de Mercado:</h3>',
+        `<p style="font-size: 0.9rem; margin-bottom: 5px;">🔹 <strong>Conservador:</strong> ${money(precoCarro * rateCons)} de perda (Mercado em alta)</p>`,
+        `<p style="font-size: 0.9rem; margin-bottom: 5px;">🔹 <strong>Realista:</strong> ${money(perdaReal)} de perda (Padrão FIPE)</p>`,
+        `<p style="font-size: 0.9rem;">🔹 <strong>Agressivo:</strong> ${money(precoCarro * rateAggr)} de perda (Crise/Baixa liquidez)</p>`
+      ]);
       return;
     }
 

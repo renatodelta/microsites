@@ -25,20 +25,56 @@
   <header><div class='container topbar'><a class='brand' href='../index.html'><img class='brand-logo' src='../assets/logo.svg' alt='Custo de Carro' /></a><nav><a href='./index.html'>Calculadoras</a><a href='../artigos/index.html'>Artigos</a><a href='../politica-de-privacidade.html'>Política de Privacidade</a><a href='../contato.html'>Contato</a><a href='../sobre.html'>Sobre</a></nav></div></header>
   <main class='container hero'>
     <h1>Calculadora de depreciação de carro</h1>
+    <p>Descubra a desvalorização real do seu veículo com base na idade, categoria e cenário de mercado. Nosso modelo utiliza depreciação progressiva para maior precisão.</p>
+    
     <section class='card'>
       <form class='tool-form' id='calcForm' data-calc='depreciacao'>
         <div class='field'>
           <label for='precoCarro'>Valor atual do veículo (R$)</label>
-          <input type='number' step='0.01' min='0' id='precoCarro' name='precoCarro' required />
+          <input type='number' step='0.01' min='0' id='precoCarro' name='precoCarro' placeholder='Ex: 50000' required />
         </div>
         <div class='field'>
-          <label for='idade'>Anos de uso do veículo</label>
-          <input type='number' step='1' min='0' id='idade' name='idade' required />
+          <label for='idade'>Idade atual do veículo (anos)</label>
+          <input type='number' step='1' min='0' id='idade' name='idade' placeholder='Ex: 2' required />
         </div>
-        <button class='btn' type='submit'>Calcular depreciação</button>
+        <div class='field'>
+          <label for='kmAnual'>Quilometragem anual (média)</label>
+          <input type='number' step='1000' min='0' id='kmAnual' name='kmAnual' placeholder='Ex: 15000' />
+        </div>
+        <div class='field'>
+          <label for='categoria'>Categoria do veículo</label>
+          <select id='categoria' name='categoria'>
+            <option value='popular'>Popular / Hatch (Mais liquidez)</option>
+            <option value='sedan'>Sedan / Médio</option>
+            <option value='suv'>SUV / Pickup (Depreciação moderada)</option>
+            <option value='premium'>Premium / Luxo (Maior desvalorização)</option>
+          </select>
+        </div>
+        <button class='btn' type='submit'>Calcular depreciação real</button>
       </form>
-      <p class='result' id='resultado' aria-live='polite'></p>
-      <p><small><b>Observação:</b> estimativa com depreciação média de 12% ao ano. Valores reais variam por modelo, manutenção e mercado.</small></p>
+      
+      <div id='resultadoWrap' style='display: none; margin-top: 24px;'>
+        <div class='result' id='resultado' aria-live='polite'></div>
+        
+        <div class='grid' style='margin-top: 20px;'>
+          <div class='data-note'>
+            <h3>Impacto no Custo por KM</h3>
+            <p>A depreciação é um custo fixo que impacta diretamente cada quilômetro rodado.</p>
+            <a href='./custo-km.html' class='btn secondary' style='font-size: 12px; padding: 6px 12px;'>Ver custo por KM</a>
+          </div>
+          <div class='data-note'>
+            <h3>Custo Mensal Total</h3>
+            <p>Integre a perda de valor com combustível e seguro para ver o gasto real.</p>
+            <a href='./simulador-principal.html' class='btn secondary' style='font-size: 12px; padding: 6px 12px;'>Simular custo total</a>
+          </div>
+        </div>
+      </div>
+
+      <div class='data-note' style='margin-top: 24px; font-size: 0.85rem; background: rgba(0,0,0,0.03);'>
+        <p><b>Como o cálculo é feito:</b> Diferente de taxas fixas, usamos uma curva de depreciação progressiva. 
+        Carros novos perdem mais valor (15-20%) no primeiro ano, enquanto carros com mais de 5 anos tendem a estabilizar (5-7%). 
+        O cálculo é aplicado ano a ano sobre o <b>valor residual</b>, refletindo a realidade do mercado automotivo.</p>
+      </div>
     </section>
   </main>
   <footer class='site-footer'><div class='container site-footer__inner'><p class='site-footer__copy'>© 2026 Custo de Carro - Todos os direitos reservados.</p><p class='site-footer__links'><a href='../sobre.html'>Sobre</a><span>|</span><a href='../contato.html'>Contato</a><span>|</span><a href='../politica-de-privacidade.html'>Política de Privacidade</a></p></div></footer>
