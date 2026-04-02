@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('calcForm');
   const result = document.getElementById('resultado');
+  const resultWrap = document.getElementById('resultadoWrap');
 
   if (!form || !result) return;
 
@@ -23,29 +24,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (type === 'custo-mensal') {
       const precoCarro = number('precoCarro');
+      const taxaDepreciacao = number('taxaDepreciacao') / 100;
       const kmMes = number('kmMes');
       const consumo = number('consumo');
       const precoCombustivel = number('precoCombustivel');
       const seguroMensal = number('seguroMensal');
       const manutencaoMensal = number('manutencaoMensal');
       const ipvaAnual = number('ipvaAnual');
-      const depreciacaoAnual = precoCarro * 0.1;
+      
+      const depreciacaoAnual = precoCarro * taxaDepreciacao;
+      const depreciacaoMensal = depreciacaoAnual / 12;
 
       if (consumo <= 0 || kmMes <= 0) {
-        result.textContent = 'Informe km por mes e consumo maiores que zero.';
+        result.textContent = 'Informe km por mês e consumo maiores que zero.';
         return;
       }
 
       const combustivelMensal = (kmMes / consumo) * precoCombustivel;
-      const custoMensal = combustivelMensal + seguroMensal + manutencaoMensal + ipvaAnual / 12 + depreciacaoAnual / 12;
+      const ipvaMensal = ipvaAnual / 12;
+      
+      const custoMensal = combustivelMensal + seguroMensal + manutencaoMensal + ipvaMensal + depreciacaoMensal;
       const custoAnual = custoMensal * 12;
       const custoKm = custoMensal / kmMes;
 
-      write([
-        'Custo mensal estimado: ' + money(custoMensal),
-        'Custo anual estimado: ' + money(custoAnual),
-        'Custo por km: ' + money(custoKm)
-      ]);
+      const items = [
+        { name: 'Combustível', value: combustivelMensal },
+        { name: 'Seguro', value: seguroMensal },
+        { name: 'Manutenção', value: manutencaoMensal },
+        { name: 'IPVA', value: ipvaMensal },
+        { name: 'Depreciação', value: depreciacaoMensal }
+      ];
+
+      const mostExpensive = items.reduce((prev, current) => (prev.value > current.value) ? prev : current);
+      const percentage = (mostExpensive.value / custoMensal) * 100;
+
+      let html = `
+        <div style="font-size: 1.25rem; margin-bottom: 20px;">
+          <div style="color: #0f172a">💰 <strong>Custo Mensal: ${money(custoMensal)}</strong></div>
+          <div style="font-size: 1rem; color: #64748b; margin-top: 5px;">📅 Custo Anual: ${money(custoAnual)}</div>
+          <div style="font-size: 1rem; color: #64748b;">🚗 Custo por KM: ${money(custoKm)}</div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 15px 0;">
+        <div style="font-size: 0.95rem;">
+          <strong>Detalhamento Mensal:</strong><br>
+          <ul style="list-style: none; padding: 0; margin: 10px 0;">
+            ${items.map(i => `<li style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span>${i.name}:</span> <span>${money(i.value)}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div class="data-note" style="margin-top: 15px; color: #0b534b;">
+          💡 <strong>Insight:</strong> Seu maior custo é <strong>${mostExpensive.name}</strong> (${percentage.toFixed(1)}% do total).
+        </div>
+      `;
+      
+      result.innerHTML = html;
+      if (resultWrap) resultWrap.style.display = 'block';
       return;
     }
 
