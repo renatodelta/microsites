@@ -375,8 +375,7 @@ input:focus {
   border-radius: var(--radius-md);
   line-height: 1.6;
   min-height: 48px;
-  display: flex;
-  align-items: center;
+  display: block;
 }
 
 .result + p {
