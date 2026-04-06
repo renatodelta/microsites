@@ -38,8 +38,10 @@ article p {
 
 .article-hero-img {
   width: 100%;
-  max-width: 720px; /* Reduced desktop size */
-  margin: 1.5rem auto 2.5rem; /* Centered */
+  max-width: 720px;
+  /* Reduced desktop size */
+  margin: 1.5rem auto 2.5rem;
+  /* Centered */
   height: auto;
   aspect-ratio: 1.85 / 1;
   object-fit: cover;
@@ -154,21 +156,25 @@ article p {
 
 @media (max-width: 640px) {
   .container {
-    width: 96%; /* Opens the reading field */
+    width: 96%;
+    /* Opens the reading field */
   }
 
   .hero {
-    padding: 20px 14px; /* More space for text */
+    padding: 20px 14px;
+    /* More space for text */
     border-radius: 16px;
     margin-top: 12px;
   }
 
   .card {
-    padding: 18px 14px; /* More space for text */
+    padding: 18px 14px;
+    /* More space for text */
   }
 
   article p {
-    font-size: 1.05rem; /* Optimized for mobile reading */
+    font-size: 1.05rem;
+    /* Optimized for mobile reading */
   }
 
   .site-footer {
