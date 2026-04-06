@@ -153,6 +153,24 @@ article p {
 }
 
 @media (max-width: 640px) {
+  .container {
+    width: 96%; /* Opens the reading field */
+  }
+
+  .hero {
+    padding: 20px 14px; /* More space for text */
+    border-radius: 16px;
+    margin-top: 12px;
+  }
+
+  .card {
+    padding: 18px 14px; /* More space for text */
+  }
+
+  article p {
+    font-size: 1.05rem; /* Optimized for mobile reading */
+  }
+
   .site-footer {
     margin-top: 28px;
   }
