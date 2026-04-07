@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
   <!-- Homepage and Core Pages -->
-  <url><loc>https://custodecarro.com/</loc><lastmod>2026-03-02</lastmod></url>
-  <url><loc>https://custodecarro.com/sobre.html</loc><lastmod>2026-03-03</lastmod></url>
-  <url><loc>https://custodecarro.com/contato.html</loc><lastmod>2026-03-04</lastmod></url>
-  <url><loc>https://custodecarro.com/politica-de-privacidade.html</loc><lastmod>2026-03-05</lastmod></url>
-  <url><loc>https://custodecarro.com/artigos/index.html</loc><lastmod>2026-03-06</lastmod></url>
-  <url><loc>https://custodecarro.com/calculadoras/index.html</loc><lastmod>2026-03-07</lastmod></url>
+  <url><loc>https://custodecarro.com/</loc><lastmod>2026-04-07</lastmod></url>
+  <url><loc>https://custodecarro.com/sobre.html</loc><lastmod>2026-04-07</lastmod></url>
+  <url><loc>https://custodecarro.com/contato.html</loc><lastmod>2026-04-07</lastmod></url>
+  <url><loc>https://custodecarro.com/politica-de-privacidade.html</loc><lastmod>2026-04-07</lastmod></url>
+  <url><loc>https://custodecarro.com/artigos/index.html</loc><lastmod>2026-04-07</lastmod></url>
+  <url><loc>https://custodecarro.com/calculadoras/index.html</loc><lastmod>2026-04-07</lastmod></url>
 
   <!-- Articles (Staggered Daily) -->
   <url><loc>https://custodecarro.com/artigos/quanto-custa-manter-um-carro-no-brasil.html</loc><lastmod>2026-03-08</lastmod></url>
@@ -49,5 +49,4 @@
   <url><loc>https://custodecarro.com/calculadoras/seguro-de-carro-mensal.html</loc><lastmod>2026-04-02</lastmod></url>
   <url><loc>https://custodecarro.com/calculadoras/troca-de-oleo-anual.html</loc><lastmod>2026-04-02</lastmod></url>
   <url><loc>https://custodecarro.com/calculadoras/viagem-de-carro-com-pedagio.html</loc><lastmod>2026-04-02</lastmod></url>
-  <url><loc>https://custodecarro.com/obrigado-contato.html</loc><lastmod>2026-04-02</lastmod></url>
 </urlset>
