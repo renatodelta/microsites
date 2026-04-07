@@ -9,6 +9,10 @@
     gtag('js', new Date());
     gtag('config', 'G-PZ6RXCVQFZ');
   </script>
+  <!-- Preconnect to external domains -->
+  <link rel='preconnect' href='https://www.googletagmanager.com' />
+  <link rel='preconnect' href='https://www.google-analytics.com' />
+  
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <title>Custo de Carro</title>
@@ -26,14 +30,20 @@
   <meta name='twitter:description' content='Calculadoras e artigos para entender custo por km, custo mensal e custo anual do carro.' />
   <meta name='adsense-client' content='ca-pub-0000000000000000' />
   <link rel='icon' type='image/svg+xml' href='./assets/favicon.svg' />
+  
+  <!-- Parallel CSS loading -->
+  <link rel='preload' href='./css/base.css' as='style' />
+  <link rel='stylesheet' href='./css/base.css' />
+  <link rel='stylesheet' href='./css/compliance.css' />
   <link rel='stylesheet' href='./css/theme.css' />
+  
   <script defer src='./js/compliance.js'></script>
 </head>
 <body>
   <header>
     <div class='container topbar'>
       <a class='brand' href='./index.html'>
-        <img class='brand-logo' src='./assets/logo.svg' alt='Custo de Carro' />
+        <img class='brand-logo' src='./assets/logo.svg' alt='Custo de Carro' width='250' height='58' />
       </a>
       <nav>
         <a href='./calculadoras/index.html'>Calculadoras</a>

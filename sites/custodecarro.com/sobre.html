@@ -18,7 +18,11 @@
   <meta property='og:url' content='https://custodecarro.com/sobre' />
   <meta name='adsense-client' content='ca-pub-0000000000000000' />
   <link rel='icon' type='image/svg+xml' href='./assets/favicon.svg' />
-  <link rel='stylesheet' href='./css/theme.css' />
+  <!-- Parallel CSS loading -->
+  <link rel='preload' href='css/base.css' as='style' />
+  <link rel='stylesheet' href='css/base.css' />
+  <link rel='stylesheet' href='css/compliance.css' />
+  <link rel='stylesheet' href='css/theme.css' />
   <style>
     .about-hero {
       background: linear-gradient(160deg, #3a1f66 0%, #8b5cf6 100%);
@@ -107,7 +111,7 @@
   <script defer src='./js/compliance.js'></script>
 </head>
 <body>
-  <header><div class='container topbar'><a class='brand' href='./index.html'><img class='brand-logo' src='./assets/logo.svg' alt='Custo de Carro' /></a><nav><a href='./calculadoras/index.html'>Calculadoras</a><a href='./artigos/index.html'>Artigos</a><a href='./politica-de-privacidade.html'>Política de Privacidade</a><a href='./contato.html'>Contato</a><a href='./sobre.html'>Sobre</a></nav></div></header>
+  <header><div class='container topbar'><a class='brand' href='./index.html'><img class="brand-logo" src="assets/logo.svg" alt="Custo de Carro" width="250" height="58" /></a><nav><a href='./calculadoras/index.html'>Calculadoras</a><a href='./artigos/index.html'>Artigos</a><a href='./politica-de-privacidade.html'>Política de Privacidade</a><a href='./contato.html'>Contato</a><a href='./sobre.html'>Sobre</a></nav></div></header>
   <main class='container hero'>
     <section class='about-hero'>
       <h1>Sobre o Custo de Carro</h1>

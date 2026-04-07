@@ -14,7 +14,11 @@
 	<title>Obrigado - Custo de Carro</title>
 	<meta name='description' content='Mensagem enviada com sucesso.' />
 	<meta name='robots' content='noindex, nofollow' />
-	<link rel='stylesheet' href='./css/theme.css' />
+	<!-- Parallel CSS loading -->
+  <link rel='preload' href='css/base.css' as='style' />
+  <link rel='stylesheet' href='css/base.css' />
+  <link rel='stylesheet' href='css/compliance.css' />
+  <link rel='stylesheet' href='css/theme.css' />
 </head>
 <body><main class='container hero'><section class='card'><h1>Obrigado pelo contato</h1><p>Sua mensagem foi enviada com sucesso. Retornaremos em breve.</p><a class='btn' href='./index.html'>Voltar para a página inicial</a></section></main></body>
 </html>
