@@ -108,38 +108,67 @@
     });
   }
 
-  function loadAdSenseByConsent(consent) {
-    const adClientMeta = document.querySelector('meta[name="adsense-client"]');
-    if (!adClientMeta) return;
+  const interacted = false;
+  let interactionEvents = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
+  let pendingGTM = false;
+  let pendingAdSense = false;
 
-    if (window.__adsenseLoaded) return;
-
-    if (!consent.marketing && !consent.analytics) return;
-
-    window.adsbygoogle = window.adsbygoogle || [];
-    window.adsbygoogle.requestNonPersonalizedAds = consent.marketing ? 0 : 1;
+  function loadGTMIfConsent(consent) {
+    if (window.__gtmLoaded) return;
+    window.__gtmLoaded = true;
 
     const script = document.createElement('script');
     script.async = true;
-    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(adClientMeta.content)}`;
-    script.crossOrigin = 'anonymous';
-
-    script.onload = function () {
-      document.dispatchEvent(new CustomEvent('adsense:loaded', {
-        detail: {
-          personalized: consent.marketing
-        }
-      }));
-    };
-
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-PZ6RXCVQFZ';
     document.head.appendChild(script);
-    window.__adsenseLoaded = true;
+
+    gtag('js', new Date());
+    gtag('config', 'G-PZ6RXCVQFZ');
+  }
+
+  function triggerOptionalScripts(consent, interact) {
+    if (!interact) {
+        setTimeout(function() {
+            triggerOptionalScripts(consent, true);
+        }, 4000); // Fail-safe after 4 seconds
+        return;
+    }
+    
+    // Load GTM
+    loadGTMIfConsent(consent);
+
+    // Load AdSense
+    const adClientMeta = document.querySelector('meta[name="adsense-client"]');
+    if (adClientMeta && !window.__adsenseLoaded && (consent.marketing || consent.analytics)) {
+        window.__adsenseLoaded = true;
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.requestNonPersonalizedAds = consent.marketing ? 0 : 1;
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(adClientMeta.content)}`;
+        script.crossOrigin = 'anonymous';
+        script.onload = function () {
+          document.dispatchEvent(new CustomEvent('adsense:loaded', {
+            detail: { personalized: consent.marketing }
+          }));
+        };
+        document.head.appendChild(script);
+    }
   }
 
   function applyConsent(consent) {
     applyGoogleConsent(consent);
     loadCategoryScripts(consent);
-    loadAdSenseByConsent(consent);
+
+    // Always delay heavy scripts until interaction
+    function onInteraction() {
+        interactionEvents.forEach(e => window.removeEventListener(e, onInteraction, { passive: true }));
+        triggerOptionalScripts(consent, true);
+    }
+
+    interactionEvents.forEach(e => window.addEventListener(e, onInteraction, { passive: true }));
+    triggerOptionalScripts(consent, false); // fallback
   }
 
   function createConsentBanner() {
