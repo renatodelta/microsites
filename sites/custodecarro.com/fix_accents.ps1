@@ -1,42 +1,66 @@
-
-$filePath = "c:\xampp\htdocs\microsites\sites\custodecarro.com\artigos\quanto-gasto-de-gasolina-por-mes.html"
-$content = Get-Content $filePath -Raw -Encoding utf8
+$files = Get-ChildItem -Path . -Include *.html,*.xml,*.txt -Recurse
 
 $replacements = @{
-    "Ãª" = "ê"
-    "Ã´" = "ô"
-    "Ã§" = "ç"
+    "Ã¡" = "á"
+    "Ã " = "à"
+    "Ã¢" = "â"
     "Ã£" = "ã"
     "Ã©" = "é"
-    "Ã¡" = "á"
+    "Ã¨" = "è"
+    "Ãª" = "ê"
     "Ã­" = "í"
-    "Ãº" = "ú"
+    "Ã¬" = "ì"
+    "Ã®" = "î"
     "Ã³" = "ó"
-    "Ã"  = "à" # fallback for lone Ã
-    "Ã·" = "÷"
-    "Ã—" = "×"
+    "Ã²" = "ò"
+    "Ã´" = "ô"
+    "Ãµ" = "õ"
     "Ãº" = "ú"
     "Ã¹" = "ù"
-    "Ã¬" = "ì"
-    "Ã²" = "ò"
-    "Ã " = "à "
+    "Ã»" = "û"
+    "Ã§" = "ç"
+    "Ã" = "Á"
+    "Ã€" = "À"
+    "Ã‚" = "Â"
+    "Ãƒ" = "Ã"
+    "Ã‰" = "É"
+    "Ãˆ" = "È"
+    "ÃŠ" = "Ê"
+    "Ã" = "Í"
+    "ÃŒ" = "Ì"
+    "ÃŽ" = "Î"
+    "Ã“" = "Ó"
+    "Ã’" = "Ò"
+    "Ã”" = "Ô"
+    "Ã•" = "Õ"
+    "Ãš" = "Ú"
+    "Ã™" = "Ù"
+    "Ã›" = "Û"
+    "Ã‡" = "Ç"
     "Â©" = "©"
+    "Â°" = "°"
+    "Âª" = "ª"
+    "Âº" = "º"
+    "PolÃ­tica" = "Política"
+    "AnÃ¡lise" = "Análise"
+    "manutenÃ§Ã£o" = "manutenção"
 }
 
-foreach ($key in $replacements.Keys) {
-    $content = $content -replace [regex]::Escape($key), $replacements[$key]
+foreach ($file in $files) {
+    $content = Get-Content $file.FullName -Raw -Encoding UTF8
+    $changed = $false
+    
+    foreach ($key in $replacements.Keys) {
+        if ($content.Contains($key)) {
+            $content = $content.Replace($key, $replacements[$key])
+            $changed = $true
+        }
+    }
+    
+    if ($changed) {
+        # Using [System.IO.File]::WriteAllText to ensure no BOM if needed, 
+        # but let's try UTF8 without BOM logic or just explicit UTF8
+        [System.IO.File]::WriteAllText($file.FullName, $content, (New-Object System.Text.UTF8Encoding($false)))
+        Write-Host "Fixed: $($file.FullName)"
+    }
 }
-
-# Final specific cleanups for "vocÃª" "direÃ§Ã£o" etc if any residuals remain
-$content = $content -replace "vocÃª", "você"
-$content = $content -replace "VocÃª", "Você"
-$content = $content -replace "Ã©", "é"
-$content = $content -replace "Ã¡", "á"
-$content = $content -replace "Ã³", "ó"
-$content = $content -replace "Ã­", "í"
-$content = $content -replace "Ãº", "ú"
-$content = $content -replace "Ã§", "ç"
-$content = $content -replace "Ã£", "ã"
-$content = $content -replace "â\?\?", "—"
-
-$content | Set-Content $filePath -NoNewline -Encoding utf8
