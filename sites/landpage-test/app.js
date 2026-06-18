@@ -215,22 +215,37 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     
     const submitBtn = leadForm.querySelector("button[type='submit']");
-    const originalText = submitBtn.innerHTML;
     
     // Mostra animação de envio
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Enviando dados...`;
+    submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Abrindo WhatsApp...`;
     
+    // Captura valores do formulário
+    const nome = document.getElementById("name").value.trim();
+    const whatsapp = document.getElementById("whatsapp").value.trim();
+    const comercio = document.getElementById("shop-name").value.trim();
+    const segmentoSelect = document.getElementById("segment");
+    const segmento = segmentoSelect.options[segmentoSelect.selectedIndex].text;
+    const cidade = document.getElementById("city").value.trim();
+
+    // Cria a mensagem estruturada
+    const textoMsg = `Olá! Gostaria de receber uma demonstração gratuita do Delivery 360.\n\n` +
+      `*Nome:* ${nome}\n` +
+      `*WhatsApp:* ${whatsapp}\n` +
+      `*Comércio:* ${comercio}\n` +
+      `*Segmento:* ${segmento}\n` +
+      `*Cidade:* ${cidade}`;
+
+    // Gera o link de redirecionamento para o suporte comercial (12) 99153-0244
+    const urlMsg = `https://api.whatsapp.com/send?phone=5512991530244&text=${encodeURIComponent(textoMsg)}`;
+
     setTimeout(() => {
-      // Simulação de resposta de sucesso após 1.5s
+      // Exibe tela de sucesso na página
       leadForm.style.display = "none";
       formSuccess.style.display = "block";
       
-      // Captura valores para feedback detalhado opcional (em log ou console local)
-      const nome = document.getElementById("name").value;
-      const comercio = document.getElementById("shop-name").value;
-      const whatsapp = document.getElementById("whatsapp").value;
-      console.log(`Lead Capturado com sucesso: ${nome} de ${comercio} (${whatsapp})`);
+      // Redireciona o usuário para o WhatsApp em uma nova aba
+      window.open(urlMsg, '_blank');
     }, 1500);
   });
 });
