@@ -178,6 +178,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 5.5 Máscara de Telefone/WhatsApp (Limite de 11 dígitos no formato: (XX) XXXXX-XXXX)
   const whatsappInput = document.getElementById("whatsapp");
+  
+  // Bloqueia qualquer tecla que não seja número
+  whatsappInput.addEventListener("keypress", (e) => {
+    if (e.key < "0" || e.key > "9") {
+      e.preventDefault();
+    }
+  });
+
   whatsappInput.addEventListener("input", (e) => {
     let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
     if (value.length > 11) {
