@@ -64,6 +64,37 @@ const segmentData = {
 
 // Inicializador e Gerenciador de Eventos
 document.addEventListener("DOMContentLoaded", () => {
+  // --- MÁSCARA DE TELEFONE/WHATSAPP (Inicializada primeiro por segurança) ---
+  const whatsappInput = document.getElementById("whatsapp");
+  if (whatsappInput) {
+    // Bloqueia qualquer tecla que não seja número
+    whatsappInput.addEventListener("keypress", (e) => {
+      if (e.key < "0" || e.key > "9") {
+        e.preventDefault();
+      }
+    });
+
+    whatsappInput.addEventListener("input", (e) => {
+      let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
+      if (value.length > 11) {
+        value = value.slice(0, 11); // Limita a 11 dígitos
+      }
+      
+      // Aplica a mesma formatação do aplicativo cliente da padaria (Celular vs Fixo)
+      if (value.length > 10) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+      } else if (value.length > 6) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+      } else if (value.length > 2) {
+        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+      } else if (value.length > 0) {
+        e.target.value = `(${value}`;
+      } else {
+        e.target.value = "";
+      }
+    });
+  }
+
   // 1. Mudança de Estilo do Header ao Rolar a Página
   const header = document.getElementById("header");
   window.addEventListener("scroll", () => {
@@ -174,36 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   reveals.forEach(reveal => {
     revealObserver.observe(reveal);
-  });
-
-  // 5.5 Máscara de Telefone/WhatsApp (Limite de 11 dígitos no formato: (XX) XXXXX-XXXX)
-  const whatsappInput = document.getElementById("whatsapp");
-  
-  // Bloqueia qualquer tecla que não seja número
-  whatsappInput.addEventListener("keypress", (e) => {
-    if (e.key < "0" || e.key > "9") {
-      e.preventDefault();
-    }
-  });
-
-  whatsappInput.addEventListener("input", (e) => {
-    let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
-    if (value.length > 11) {
-      value = value.slice(0, 11); // Limita a 11 dígitos
-    }
-    
-    // Aplica a mesma formatação do aplicativo cliente da padaria (Celular vs Fixo)
-    if (value.length > 10) {
-      e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
-    } else if (value.length > 6) {
-      e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
-    } else if (value.length > 2) {
-      e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-    } else if (value.length > 0) {
-      e.target.value = `(${value`;
-    } else {
-      e.target.value = "";
-    }
   });
 
   // 6. Formulário de Captura de Leads com Efeito Interativo
