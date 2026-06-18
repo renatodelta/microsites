@@ -176,6 +176,28 @@ document.addEventListener("DOMContentLoaded", () => {
     revealObserver.observe(reveal);
   });
 
+  // 5.5 Máscara de Telefone/WhatsApp (Limite de 11 dígitos no formato: (XX) XXXXX-XXXX)
+  const whatsappInput = document.getElementById("whatsapp");
+  whatsappInput.addEventListener("input", (e) => {
+    let value = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
+    if (value.length > 11) {
+      value = value.slice(0, 11); // Limita a 11 dígitos
+    }
+    
+    // Aplica a formatação de máscara brasileira
+    if (value.length > 10) {
+      e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+    } else if (value.length > 6) {
+      e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+    } else if (value.length > 2) {
+      e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+    } else if (value.length > 0) {
+      e.target.value = `(${value`;
+    } else {
+      e.target.value = "";
+    }
+  });
+
   // 6. Formulário de Captura de Leads com Efeito Interativo
   const leadForm = document.getElementById("lead-form");
   const formSuccess = document.getElementById("form-success");
