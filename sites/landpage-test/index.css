@@ -377,6 +377,7 @@ img {
 /* Seções de Conteúdo */
 section {
   padding: 100px 0;
+  scroll-margin-top: 90px; /* Evita que o cabeçalho fixo cubra o início da seção ao rolar pelo menu */
 }
 
 .section-header {
