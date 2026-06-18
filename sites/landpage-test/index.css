@@ -643,7 +643,7 @@ section {
 /* Diferenciais e Vantagens */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
 }
 
@@ -683,6 +683,16 @@ section {
 .feature-card:nth-child(3) .feat-icon-wrapper {
   background-color: #fef3c7;
   color: #d97706;
+}
+
+.feature-card:nth-child(4) .feat-icon-wrapper {
+  background-color: #fae8ff;
+  color: #a855f7;
+}
+
+.feature-card:nth-child(5) .feat-icon-wrapper {
+  background-color: #e0f2fe;
+  color: #0284c7;
 }
 
 .feature-card h3 {
