@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cidade = document.getElementById("city").value.trim();
 
     // Cria a mensagem estruturada
-    const textoMsg = `Olá! Gostaria de receber uma demonstração gratuita do Delivery 360.\n\n` +
+    const textoMsg = `Olá! Gostaria de contratar o Delivery 360.\n\n` +
       `*Nome:* ${nome}\n` +
       `*WhatsApp:* ${whatsapp}\n` +
       `*Comércio:* ${comercio}\n` +

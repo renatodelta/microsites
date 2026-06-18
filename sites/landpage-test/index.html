@@ -34,7 +34,7 @@
       </nav>
 
       <div class="nav-cta">
-        <a href="#contato" class="btn btn-primary">Iniciar Teste Grátis</a>
+        <a href="#contato" class="btn btn-primary">Ativar Meu Delivery</a>
       </div>
     </div>
   </header>
@@ -53,7 +53,7 @@
             WhatsApp ou painel de controle e diga adeus às taxas absurdas de aplicativos terceiros.
           </p>
           <div class="hero-btns">
-            <a href="#contato" class="btn btn-accent">Criar Meu Catálogo Grátis</a>
+            <a href="#contato" class="btn btn-accent">Ativar Meu Delivery</a>
             <a href="#como-funciona" class="btn btn-secondary">Como Funciona</a>
           </div>
           <div class="hero-features-list">
@@ -502,56 +502,62 @@
             Cidades a partir de 70 mil habitantes possuem um comércio de bairro extremamente forte. Nós ajudamos você a
             capturar esses clientes no digital com um sistema rápido, acessível e sem taxas abusivas de entrega.
           </p>
-          <p>Preencha os dados ao lado para solicitar uma demonstração gratuita do sistema personalizado com o seu
-            logotipo e suas cores.</p>
+          <p>Preencha os dados ao lado para contratar o sistema e recebê-lo personalizado com o seu logotipo e suas cores.</p>
 
           <div class="contact-info-list">
             <div class="contact-info-item">
               <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
-              <div>
-                <strong style="display:block; font-size: 14px; color: var(--color-text-muted);">Fale Conosco</strong>
-                <span>contato@lojistadigital.site</span>
+              <div class="contact-info-content">
+                <h4>E-mail</h4>
+                <p>contato@delivery360.com.br</p>
               </div>
             </div>
             <div class="contact-info-item">
-              <div class="contact-info-icon"><i class="fa-brands fa-whatsapp"></i></div>
-              <div>
-                <strong style="display:block; font-size: 14px; color: var(--color-text-muted);">Suporte
-                  Comercial</strong>
-                <span>(12) 99153-0244</span>
+              <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-info-content">
+                <h4>WhatsApp Comercial</h4>
+                <p>(12) 99153-0244</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fa-solid fa-clock"></i></div>
+              <div class="contact-info-content">
+                <h4>Horário de Atendimento</h4>
+                <p>Segunda a Sexta, das 9h às 18h</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="contact-form-card">
-          <h3 style="font-family: var(--font-title); font-size: 24px; margin-bottom: 24px;">Solicitar Demonstração</h3>
+        <div class="contact-card">
+          <h3 style="font-family: var(--font-title); font-size: 24px; margin-bottom: 24px;">Ativar Meu Delivery</h3>
 
           <form id="lead-form">
-            <div class="form-group">
-              <label for="name" class="form-label">Seu Nome</label>
-              <input type="text" id="name" class="form-control" placeholder="Ex: Renato Silva" required>
-            </div>
-
-            <div class="form-group">
-              <label for="whatsapp" class="form-label">WhatsApp de Contato</label>
-              <input type="tel" id="whatsapp" class="form-control" placeholder="Ex: (11) 99999-9999" maxlength="15" required>
-            </div>
-
-            <div class="form-group-row">
+            <div class="form-row">
               <div class="form-group">
-                <label for="shop-name" class="form-label">Nome do Comércio</label>
-                <input type="text" id="shop-name" class="form-control" placeholder="Ex: Padaria do Bairro" required>
+                <label for="name" class="form-label">Seu Nome</label>
+                <input type="text" id="name" class="form-control" placeholder="Ex: João Silva" required>
               </div>
               <div class="form-group">
-                <label for="segment" class="form-label">Seu Segmento</label>
+                <label for="whatsapp" class="form-label">WhatsApp de Contato</label>
+                <input type="text" id="whatsapp" class="form-control" placeholder="(00) 00000-0000" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="shop-name" class="form-label">Nome do seu Negócio</label>
+                <input type="text" id="shop-name" class="form-control" placeholder="Ex: Padaria Lamim" required>
+              </div>
+              <div class="form-group">
+                <label for="segment" class="form-label">Segmento</label>
                 <select id="segment" class="form-control" required>
                   <option value="" disabled selected>Selecione...</option>
                   <option value="padaria">Padaria / Confeitaria</option>
-                  <option value="mercado">Pequeno Mercado</option>
-                  <option value="farmacia">Farmácia / Drogaria</option>
-                  <option value="restaurante">Restaurante / Lanchonete</option>
-                  <option value="outro">Outro Negócio</option>
+                  <option value="mercado">Mercado / Mercearia</option>
+                  <option value="hortifruti">Hortifruti</option>
+                  <option value="pizzaria">Pizzaria / Hamburgueria</option>
+                  <option value="outros">Outro Segmento</option>
                 </select>
               </div>
             </div>
@@ -563,16 +569,15 @@
 
             <button type="submit" class="btn btn-accent"
               style="width: 100%; justify-content: center; font-size: 16px; padding: 14px;">
-              <i class="fa-brands fa-whatsapp"></i> Receber Demonstração Grátis
+              <i class="fa-brands fa-whatsapp"></i> Contratar Agora
             </button>
           </form>
 
           <div id="form-success"
             style="display: none; background-color: var(--color-secondary-light); border: 1px solid var(--color-secondary); color: var(--color-secondary-hover); padding: 16px; border-radius: var(--radius-sm); margin-top: 16px; text-align: center;">
             <i class="fa-solid fa-circle-check" style="font-size: 24px; margin-bottom: 8px;"></i>
-            <h4 style="font-family: var(--font-title); margin-bottom: 4px;">Solicitação Enviada!</h4>
-            <p style="font-size: 13px;">Nossa equipe entrará em contato em breve pelo WhatsApp para configurar a
-              demonstração da sua loja.</p>
+            <h4 style="font-family: var(--font-title); margin-bottom: 4px;">Pedido Enviado!</h4>
+            <p style="font-size: 13px;">Nossa equipe entrará em contato em breve pelo WhatsApp para configurar e ativar a sua loja.</p>
           </div>
         </div>
       </div>
@@ -668,7 +673,7 @@
           <h3>Suporte e Contato</h3>
           <ul>
             <li class="footer-link-item"><a href="#faq">Perguntas Frequentes</a></li>
-            <li class="footer-link-item"><a href="#contato">Solicitar Demonstração</a></li>
+            <li class="footer-link-item"><a href="#contato">Contratar Agora</a></li>
             <li class="footer-link-item"><a href="#">Portal do Parceiro</a></li>
           </ul>
         </div>
