@@ -768,6 +768,35 @@ section {
   color: var(--color-text-light);
 }
 
+.price-original {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: var(--color-text-light);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.price-promo-label {
+  display: inline-block;
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary-hover);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.price-period {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: -16px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
 .price-features {
   margin-bottom: 32px;
 }
