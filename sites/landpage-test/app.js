@@ -192,9 +192,11 @@ document.addEventListener("DOMContentLoaded", () => {
       value = value.slice(0, 11); // Limita a 11 dígitos
     }
     
-    // Aplica a formatação estrita de celular: (XX) XXXXX-XXXX
-    if (value.length > 7) {
+    // Aplica a mesma formatação do aplicativo cliente da padaria (Celular vs Fixo)
+    if (value.length > 10) {
       e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+    } else if (value.length > 6) {
+      e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
     } else if (value.length > 2) {
       e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
     } else if (value.length > 0) {
