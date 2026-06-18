@@ -1111,11 +1111,11 @@ section {
   }
 }
 
-/* Animações de Scroll */
+/* Animações de Scroll - Ajustadas para garantir exibição instantânea e evitar seções invisíveis */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .reveal.active {
