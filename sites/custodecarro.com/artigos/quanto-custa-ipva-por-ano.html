@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang='pt-BR'>
 <head>
   <meta charset='utf-8' />
@@ -28,131 +28,96 @@
       <p>Neste guia, você vai ver como calcular o IPVA, entender o que muda de estado para estado e consultar uma tabela com as alíquotas de referência para carros de passeio em todo o Brasil.</p>
 
       <h2>Como calcular quanto custa IPVA por ano</h2>
-      <p>Para descobrir quanto custa IPVA por ano, você precisa de dois dados:</p>
-      <ul>
-        <li>Valor venal do carro</li>
-        <li>Alíquota do IPVA no seu estado</li>
-      </ul>
-      <p><strong>Fórmula básica:</strong> IPVA = valor venal do veículo × alíquota do estado</p>
+      <p>O IPVA (Imposto sobre a Propriedade de Veículos Automotores) é um tributo estadual cobrado anualmente que costuma encabeçar a lista de preocupações financeiras de qualquer motorista no início do ano. E muitos proprietários são pegos de surpresa com a flutuação do valor cobrado.</p>
+      <p>Se você quer entender quanto custa IPVA por ano de forma prática, saiba que o imposto é calculado aplicando-se uma alíquota percentual definida por cada estado sobre o valor de mercado do veículo. No entanto, as regras de cálculo, as datas de vencimento, os descontos à vista e as isenções mudam completamente de uma Unidade Federativa (UF) para outra.</p>
+      <p>Neste guia completo, você vai aprender a calcular o IPVA do seu carro usando a Tabela FIPE de referência, consultar a tabela de alíquotas atualizada de todos os estados e entender as regras de isenção por idade do veículo e motorização elétrica.</p>
 
-      <h3>Exemplo prático</h3>
-      <ul>
-        <li>Valor venal do carro: R$ 50.000</li>
-        <li>Alíquota do IPVA: 4%</li>
-      </ul>
-      <p>Cálculo: R$ 50.000 × 0,04 = <strong>R$ 2.000 por ano</strong></p>
-      <p>Se a alíquota no seu estado for 2%, o mesmo carro pagaria R$ 1.000. Ou seja, a UF em que o veículo é registrado muda bastante o valor final.</p>
-      <p>Se quiser uma simulação rápida, use também a <a href='../calculadoras/ipva-do-carro'>calculadora de IPVA do carro</a>.</p>
+      <div class='data-note' style='margin: 24px 0;'>
+        <p>👉 <strong>Cálculo Automático:</strong> Para estimar o valor do tributo do seu veículo em segundos, acesse a <a href='../calculadoras/ipva-do-carro'>Calculadora de IPVA do carro</a>.</p>
+      </div>
 
-      <h2>Tabela de alíquotas do IPVA por estado</h2>
-      <p class='data-note'><strong>Importante:</strong> a tabela abaixo traz alíquotas de referência mais comuns para carros de passeio a combustão ou flex. Veículos elétricos, híbridos, motos, utilitários, PCD, táxi e regras de isenção podem ter percentuais diferentes conforme a legislação estadual.</p>
+      <h2>Como o IPVA é calculado? (A Base de Cálculo FIPE)</h2>
+      <p>O valor do IPVA não é estático. Para carros usados, o governo estadual não utiliza o valor de compra original do carro, mas sim o seu valor médio de mercado registrado na **Tabela FIPE** em outubro do ano anterior ao da cobrança.</p>
+      <p>Se o mercado de usados se valoriza (como ocorreu nos últimos anos), o valor venal do seu carro na FIPE aumenta, o que faz com que o IPVA suba mesmo que o carro seja mais velho.</p>
+      <p>Para carros novos (zero quilômetro), a base de cálculo é o valor total registrado na **Nota Fiscal de compra** emitida pela concessionária.</p>
+
+      <h2>A Fórmula Simples do IPVA</h2>
+      <p style='background: #f8fafc; padding: 15px; border-radius: 10px; border-left: 4px solid var(--primary);'>
+        <strong>Valor do IPVA = Valor Venal (FIPE) × Alíquota do Estado (%)</strong>
+      </p>
+      <p><strong>Exemplo Prático:</strong> Se o seu carro vale R$ 60.000 de acordo com a FIPE e você reside no estado de São Paulo (alíquota de 4%):</p>
+      <p>Cálculo: R$ 60.000 × 0,04 = **R$ 2.400,00 por ano** (ou 5 parcelas de R$ 480,00).</p>
+
+      <h2>Tabela de Alíquotas de IPVA por Estado (Referência 2026)</h2>
+      <p>Abaixo estão as alíquotas padrão cobradas de veículos de passeio movidos a gasolina ou flex em cada estado do Brasil:</p>
 
       <div class='article-table-wrap'>
         <table class='article-table'>
           <thead>
             <tr>
-              <th>Estado</th>
-              <th>Alíquota de referência</th>
-              <th>Exemplo em carro de R$ 50 mil</th>
+              <th>Estado (UF)</th>
+              <th>Alíquota de Referência (Passeio)</th>
+              <th>Simulação (Carro de R$ 50 mil)</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Acre</td><td>2%</td><td>R$ 1.000</td></tr>
-            <tr><td>Alagoas</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Amapá</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Amazonas</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Bahia</td><td>2,5%</td><td>R$ 1.250</td></tr>
-            <tr><td>Ceará</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Distrito Federal</td><td>3,5%</td><td>R$ 1.750</td></tr>
-            <tr><td>Espírito Santo</td><td>2%</td><td>R$ 1.000</td></tr>
-            <tr><td>Goiás</td><td>3,75%</td><td>R$ 1.875</td></tr>
-            <tr><td>Maranhão</td><td>2,5%</td><td>R$ 1.250</td></tr>
-            <tr><td>Mato Grosso</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Mato Grosso do Sul</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Minas Gerais</td><td>4%</td><td>R$ 2.000</td></tr>
-            <tr><td>Pará</td><td>2,5%</td><td>R$ 1.250</td></tr>
-            <tr><td>Paraíba</td><td>2,5%</td><td>R$ 1.250</td></tr>
-            <tr><td>Paraná</td><td>3,5%</td><td>R$ 1.750</td></tr>
-            <tr><td>Pernambuco</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Piauí</td><td>2,5%</td><td>R$ 1.250</td></tr>
-            <tr><td>Rio de Janeiro</td><td>4%</td><td>R$ 2.000</td></tr>
-            <tr><td>Rio Grande do Norte</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Rio Grande do Sul</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Rondônia</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Roraima</td><td>3%</td><td>R$ 1.500</td></tr>
-            <tr><td>Santa Catarina</td><td>2%</td><td>R$ 1.000</td></tr>
-            <tr><td>São Paulo</td><td>4%</td><td>R$ 2.000</td></tr>
-            <tr><td>Sergipe</td><td>2,5%</td><td>R$ 1.250</td></tr>
-            <tr><td>Tocantins</td><td>2%</td><td>R$ 1.000</td></tr>
+            <tr><td>Acre (AC)</td><td>2,0%</td><td>R$ 1.000,00</td></tr>
+            <tr><td>Alagoas (AL)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Amapá (AP)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Amazonas (AM)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Bahia (BA)</td><td>2,5%</td><td>R$ 1.250,00</td></tr>
+            <tr><td>Ceará (CE)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Distrito Federal (DF)</td><td>3,5%</td><td>R$ 1.750,00</td></tr>
+            <tr><td>Espírito Santo (ES)</td><td>2,0%</td><td>R$ 1.000,00</td></tr>
+            <tr><td>Goiás (GO)</td><td>3,75%</td><td>R$ 1.875,00</td></tr>
+            <tr><td>Maranhão (MA)</td><td>2,5%</td><td>R$ 1.250,00</td></tr>
+            <tr><td>Mato Grosso (MT)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Mato Grosso do Sul (MS)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Minas Gerais (MG)</td><td>4,0%</td><td>R$ 2.000,00</td></tr>
+            <tr><td>Pará (PA)</td><td>2,5%</td><td>R$ 1.250,00</td></tr>
+            <tr><td>Paraíba (PB)</td><td>2,5%</td><td>R$ 1.250,00</td></tr>
+            <tr><td>Paraná (PR)</td><td>3,5%</td><td>R$ 1.750,00</td></tr>
+            <tr><td>Pernambuco (PE)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Piauí (PI)</td><td>2,5%</td><td>R$ 1.250,00</td></tr>
+            <tr><td>Rio de Janeiro (RJ)</td><td>4,0%</td><td>R$ 2.000,00</td></tr>
+            <tr><td>Rio Grande do Norte (RN)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Rio Grande do Sul (RS)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Rondônia (RO)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Roraima (RR)</td><td>3,0%</td><td>R$ 1.500,00</td></tr>
+            <tr><td>Santa Catarina (SC)</td><td>2,0%</td><td>R$ 1.000,00</td></tr>
+            <tr><td>São Paulo (SP)</td><td>4,0%</td><td>R$ 2.000,00</td></tr>
+            <tr><td>Sergipe (SE)</td><td>2,5%</td><td>R$ 1.250,00</td></tr>
+            <tr><td>Tocantins (TO)</td><td>2,0%</td><td>R$ 1.000,00</td></tr>
           </tbody>
-          <tfoot>
-            <tr>
-              <td colspan='3'><small>Dados referentes a 2026</small></td>
-            </tr>
-          </tfoot>
         </table>
       </div>
 
-      <h2>Quanto custa o IPVA em exemplos reais</h2>
-      <p>Para enxergar melhor o peso do imposto, vale comparar cenários práticos:</p>
-
-      <h3>Carro de R$ 40.000</h3>
+      <h2>Isenção de IPVA por Idade do Veículo</h2>
+      <p>Com o passar dos anos, o veículo deixa de pagar IPVA. A idade mínima para obter a isenção por tempo de fabricação varia conforme a legislação estadual. Confira as regras principais:</p>
       <ul>
-        <li>Estado com 2%: R$ 800 por ano</li>
-        <li>Estado com 2,5%: R$ 1.000 por ano</li>
-        <li>Estado com 3%: R$ 1.200 por ano</li>
-        <li>Estado com 4%: R$ 1.600 por ano</li>
+        <li><strong>Isenção a partir de 10 anos de fabricação:</strong> Roraima e Rio Grande do Norte.</li>
+        <li><strong>Isenção a partir de 15 anos de fabricação:</strong> Amazonas, Bahia, Ceará, Distrito Federal, Espírito Santo, Maranhão, Pará, Paraíba, Piauí, Rio de Janeiro, Rondônia e Sergipe.</li>
+        <li><strong>Isenção a partir de 20 anos de fabricação:</strong> São Paulo, Paraná, Mato Grosso do Sul, Acre e Rio Grande do Sul.</li>
+        <li><strong>Isenção a partir de 30 anos de fabricação:</strong> Santa Catarina e Tocantins.</li>
+        <li><strong>Regra Especial (Redução Progressiva):</strong> Minas Gerais adota um sistema diferenciado e não concede isenção pura por idade simplesmente (exceto carros com placa preta de coleção).</li>
       </ul>
 
-      <h3>Carro de R$ 80.000</h3>
+      <h2>Descontos e Isenções para Carros Híbridos e Elétricos</h2>
+      <p>Como incentivo à transição energética e à redução de emissões, vários estados oferecem benefícios fiscais significativos para veículos elétricos e híbridos:</p>
       <ul>
-        <li>Estado com 2%: R$ 1.600 por ano</li>
-        <li>Estado com 3%: R$ 2.400 por ano</li>
-        <li>Estado com 3,5%: R$ 2.800 por ano</li>
-        <li>Estado com 4%: R$ 3.200 por ano</li>
+        <li><strong>Isenção de 100% de IPVA:</strong> Paraná, Rio Grande do Sul, Pernambuco, Ceará, Maranhão e Distrito Federal (concedem isenção total para elétricos).</li>
+        <li><strong>Descontos ou Alíquotas Reduzidas:</strong> Rio de Janeiro cobra apenas 1,5% de IPVA para carros elétricos e 0,5% para híbridos. Em São Paulo, há restituição de parte do imposto correspondente à quota municipal para elétricos e híbridos até certo valor.</li>
       </ul>
-      <p>Esses números mostram por que o IPVA deve entrar no planejamento anual do carro e não ser tratado como uma despesa isolada.</p>
 
-      <h2>O que pode mudar o valor do IPVA</h2>
-      <p>Mesmo com a alíquota definida pelo estado, o valor pago pode variar por outros fatores:</p>
-      <ul>
-        <li>Tipo do veículo</li>
-        <li>Combustível ou motorização</li>
-        <li>Ano de fabricação</li>
-        <li>Descontos por pagamento à vista</li>
-        <li>Parcelamento oferecido pelo estado</li>
-        <li>Isenções para categorias específicas</li>
-      </ul>
-      <p>Por isso, use a tabela como referência inicial, mas confirme as regras do seu estado antes de pagar.</p>
-
-      <h2>Como pagar menos ou se planejar melhor</h2>
-      <p>Nem sempre dá para reduzir a alíquota, mas dá para se organizar melhor para o impacto do IPVA não apertar o orçamento.</p>
-
-      <h3>Reserve o valor ao longo do ano</h3>
-      <p>Separar uma quantia por mês evita susto no começo do ano.</p>
-
-      <h3>Aproveite desconto à vista</h3>
-      <p>Muitos estados oferecem abatimento para quem quita o imposto em cota única.</p>
-
-      <h3>Inclua o IPVA no custo anual do carro</h3>
-      <p>O imposto é um custo fixo do veículo e deve entrar junto com seguro, manutenção e depreciação. Você pode consolidar isso com a <a href='../calculadoras/custo-anual-do-carro'>calculadora de custo anual do carro</a>.</p>
-
-      <h2>Vale a pena olhar o IPVA antes de comprar um carro?</h2>
-      <p>Sim. Muita gente foca no preço de compra e esquece que um carro mais caro gera IPVA mais alto todos os anos.</p>
-      <p>Antes de fechar negócio, vale calcular:</p>
-      <ul>
-        <li>Preço do veículo</li>
-        <li>Alíquota do seu estado</li>
-        <li>Seguro</li>
-        <li>Consumo</li>
-        <li>Manutenção</li>
-      </ul>
-      <p>Essa análise dá uma visão muito mais realista do custo total de propriedade.</p>
+      <h2>Dicas para Se Planejar e Pagar Menos</h2>
+      <ol>
+        <li><strong>Desconto da Cota Única (À Vista):</strong> A grande maioria dos estados oferece descontos entre 3% e 10% para quem quita o imposto integralmente na primeira parcela. Se você possui o capital guardado, o desconto à vista costuma render muito mais do que aplicações financeiras de curto prazo no mesmo período.</li>
+        <li><strong>Cadastre-se nos Programas de Nota Fiscal:</strong> Estados como São Paulo (Nota Fiscal Paulista) e Rio Grande do Sul (Nota Fiscal Gaúcha) permitem acumular créditos de compras que podem ser abatidos diretamente no valor do IPVA do ano seguinte.</li>
+        <li><strong>Provisionamento Mensal:</strong> Enxergue o IPVA como um custo mensal diluído (ex: se seu IPVA é R$ 1.200, guarde R$ 100 por mês). Isso evita o aperto financeiro típico dos meses de janeiro e fevereiro.</li>
+      </ol>
 
       <h2>Conclusão</h2>
-      <p>Entender quanto custa IPVA por ano é essencial para não subestimar o custo real de ter carro no Brasil.</p>
-      <p>Como a alíquota muda de estado para estado, dois carros com o mesmo valor podem gerar despesas anuais bem diferentes. É por isso que consultar a tabela por UF e fazer a conta antes ajuda tanto.</p>
-      <p>Se você quiser sair da teoria e ver o valor no seu caso, use agora a <a href='../calculadoras/ipva-do-carro'>calculadora de IPVA</a> e depois compare o impacto no orçamento com a <a href='../calculadoras/simulador-principal'>calculadora principal de custo do carro</a>.</p>
+      <p>O IPVA é um dos componentes de custos fixos mais significativos na manutenção de um veículo. Colocá-lo na ponta do lápis antes de adquirir um carro evita compras por impulso e garante que a despesa caiba com conforto no seu orçamento mensal.</p>
       <p><a href='./'>Voltar ao índice de artigos</a></p>
     </article>
   </main>
