@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Rápido - Gabarix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .solve-footer {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: var(--card-bg);
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border);
+            z-index: 100;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .solve-footer .container {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 700px;
+            padding: 0 1.5rem;
+        }
+        #feedback-area {
+            position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
+            width: calc(100% - 3rem); max-width: 700px; padding: 1.5rem; border-radius: 12px;
+            display: none; box-shadow: var(--shadow);
+            z-index: 90;
+            animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translate(-50%, 20px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        .feedback-correct { background: var(--secondary); color: white; }
+        .feedback-wrong { background: #ef4444; color: white; }
+        
+        .explanation-box {
+            margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 0.95rem; font-weight: 500;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <header>
+        <nav style="max-width: 700px; padding: 0 1.5rem;">
+            <a href="index.php" class="logo">Gabarix<span>.</span></a>
+            <div style="flex: 1; margin: 0 2rem;">
+                <div class="xp-bar-container" style="width: 100%; height: 10px;">
+                    <div id="progress-bar-fill" class="xp-bar-fill" style="width: 0%; transition: width 0.3s ease;"></div>
+                </div>
+            </div>
+            <div class="stat-item" style="padding: 0;">
+                <span class="stat-value" id="score-display" style="font-size: 1.25rem;">0/5</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 700px; padding-bottom: 200px;">
+        <div id="quiz-container">
+            <div style="margin-bottom: 2.5rem;">
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                    <span class="level-badge" id="q-subject">Módulo Rápido</span>
+                    <span class="level-badge" style="background: var(--border); color: var(--text-dim); border: none;">QUIZ INTERATIVO</span>
+                </div>
+                <h2 style="font-weight: 800; line-height: 1.4; font-size: 1.5rem; color: var(--text);" id="q-text">Carregando pergunta...</h2>
+            </div>
+            <div id="options-list">
+                <!-- Opções serão renderizadas aqui via JS -->
+            </div>
+        </div>
+
+        <div id="result-container" class="card" style="display: none; text-align: center; padding: 4rem 2rem;">
+            <i class="fas fa-trophy" style="font-size: 4rem; color: var(--accent); margin-bottom: 1.5rem;"></i>
+            <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 1rem;">Quiz Concluído!</h2>
+            <p style="font-size: 1.125rem; color: var(--text-dim);">Você finalizou o treinamento rápido.</p>
+            <div style="margin: 2rem 0;">
+                <span style="font-size: 3rem; font-weight: 900; color: var(--primary);" id="final-score">0</span>
+                <span style="font-size: 1.5rem; color: var(--text-dim); font-weight: 700;">/5 acertos</span>
+            </div>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="location.reload()" style="padding: 1rem 2rem;">Tentar Novamente</button>
+                <a href="index.php" class="btn btn-outline" style="padding: 1rem 2rem;">Ir para o Dashboard</a>
+            </div>
+        </div>
+    </main>
+
+    <div id="feedback-area">
+        <h4 id="feedback-title" style="font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem;"></h4>
+        <div class="explanation-box" id="explanation-text"></div>
+    </div>
+
+    <div class="solve-footer" id="footer-actions">
+        <div class="container">
+            <button class="btn btn-outline" style="font-weight: 700;" onclick="nextQuestion()">PULAR</button>
+            <button id="check-btn" class="btn btn-primary" style="font-weight: 700;" onclick="checkAnswer()" disabled>VERIFICAR RESPOSTA</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                subject: "Direito Constitucional",
+                text: "No direito constitucional brasileiro, qual princípio garante que a lei não prejudicará o direito adquirido, o ato jurídico perfeito e a coisa julgada?",
+                options: ["Princípio da Legalidade", "Princípio da Irretroatividade", "Princípio da Isonomia", "Princípio da Segurança Jurídica"],
+                correctIndex: 3,
+                explanation: "O princípio da Segurança Jurídica, previsto no Art. 5º, XXXVI da CF/88."
+            },
+            {
+                subject: "Raciocínio Lógico",
+                text: "Qual é o valor de x na equação 3x - 12 = 0?",
+                options: ["2", "3", "4", "6"],
+                correctIndex: 2,
+                explanation: "Resolvendo a equação simples: 3x = 12, portanto x = 12/3 => x = 4."
+            },
+            {
+                subject: "História do Brasil",
+                text: "Quem foi o primeiro imperador do Brasil pós Independência?",
+                options: ["D. João VI", "D. Pedro I", "D. Pedro II", "Princesa Isabel"],
+                correctIndex: 1,
+                explanation: "D. Pedro I foi o primeiro imperador do Brasil Império, proclamando a independência em 1822."
+            },
+            {
+                subject: "Língua Portuguesa",
+                text: "Assinale a alternativa em que há erro de concordância verbal:",
+                options: ["Fazem cinco anos que moro aqui.", "Deve haver muitos problemas na empresa.", "Alugam-se casas na praia.", "Faz frio hoje."],
+                correctIndex: 0,
+                explanation: "O verbo 'fazer' indicando tempo decorrido é impessoal, devendo ficar no singular obrigatoriamente: 'Faz cinco anos que moro aqui'."
+            },
+            {
+                subject: "Ciências / Química",
+                text: "Na tabela periódica oficial, qual o símbolo químico do elemento Prata?",
+                options: ["Pr", "Pt", "Au", "Ag"],
+                correctIndex: 3,
+                explanation: "O símbolo Ag vem do latim 'Argentum'. 'Au' é Ouro (Aurum), 'Pt' é Platina."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOptionIndex = null;
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                showResults();
+                return;
+            }
+
+            const q = questions[currentQuestionIndex];
+            document.getElementById('q-text').innerText = q.text;
+            document.getElementById('q-subject').innerText = q.subject;
+            
+            const optionsList = document.getElementById('options-list');
+            optionsList.innerHTML = '';
+            
+            const labels = ['A', 'B', 'C', 'D'];
+            q.options.forEach((optText, index) => {
+                const div = document.createElement('div');
+                div.className = 'option-card';
+                div.onclick = () => selectOption(div, index);
+                div.innerHTML = `
+                    <div class="option-label">${labels[index]}</div>
+                    <span>${optText}</span>
+                `;
+                optionsList.appendChild(div);
+            });
+
+            document.getElementById('score-display').innerText = `${score}/${questions.length}`;
+            document.getElementById('progress-bar-fill').style.width = `${(currentQuestionIndex / questions.length) * 100}%`;
+            
+            const checkBtn = document.getElementById('check-btn');
+            checkBtn.disabled = true;
+            checkBtn.innerText = "VERIFICAR RESPOSTA";
+            checkBtn.onclick = checkAnswer;
+            
+            document.getElementById('feedback-area').style.display = 'none';
+            selectedOptionIndex = null;
+        }
+
+        function selectOption(el, index) {
+            // Previne a mudança se a resposta já foi verificada
+            if (document.getElementById('feedback-area').style.display === 'block') return;
+            
+            document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedOptionIndex = index;
+            document.getElementById('check-btn').disabled = false;
+        }
+
+        function checkAnswer() {
+            const q = questions[currentQuestionIndex];
+            const isCorrect = (selectedOptionIndex === q.correctIndex);
+            
+            if (isCorrect) score++;
+
+            const feedbackArea = document.getElementById('feedback-area');
+            const checkBtn = document.getElementById('check-btn');
+
+            feedbackArea.className = isCorrect ? 'feedback-correct' : 'feedback-wrong';
+            // Usa os ícones do font-awesome para o feedback
+            document.getElementById('feedback-title').innerHTML = isCorrect 
+                ? '<i class="fas fa-check-circle"></i> Correto!' 
+                : '<i class="fas fa-times-circle"></i> Ops, não foi dessa vez.';
+            
+            document.getElementById('explanation-text').innerText = q.explanation;
+            feedbackArea.style.display = 'block';
+
+            checkBtn.innerText = "PRÓXIMA QUESTÃO";
+            checkBtn.onclick = () => {
+                currentQuestionIndex++;
+                loadQuestion();
+            };
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('footer-actions').style.display = 'none';
+            document.getElementById('feedback-area').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+            
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('progress-bar-fill').style.width = `100%`;
+            document.getElementById('score-display').innerText = `${score}/${questions.length}`;
+        }
+
+        // Initialize theme based on localStorage matching the main application
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            loadQuestion();
+        });
+    </script>
+</body>
+</html>
